@@ -3,15 +3,19 @@ package view;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import dao.KonyvDao;
 import dao.KonyvesboltDao;
+import model.Konyv;
 
 public class Main {
 	private static KonyvesboltDao kbdao;
@@ -22,7 +26,7 @@ public class Main {
 		JLabel pw=new JLabel("password:");
 		JButton loginButton=new JButton("login");
 		JTextField username=new JTextField();
-		JTextField password=new JTextField();
+		JPasswordField password=new JPasswordField();
 		login.add(un);
 		login.add(username);
 		login.add(pw);
@@ -33,7 +37,7 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					kbdao=new KonyvesboltDao(username.getText(), password.getText());
+					KonyvesboltDao.connect(username.getText(), new String(password.getPassword()));
 					JOptionPane.showMessageDialog(login,
 						    "Sikerült");
 					login.setVisible(false);
