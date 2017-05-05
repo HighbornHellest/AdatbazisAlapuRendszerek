@@ -9,12 +9,12 @@ import java.util.List;
 import model.Konyv;
 
 /**
- * @author Tam�ssy Urm�s
+ * @author Tamássy Urmás
  *
  */
 public class KonyvDao {
 	/**
-	 * K�nyvek hozz�ad�sa
+	 * Könyvek hozzáadása
 	 * @param konyv
 	 * @return
 	 */
@@ -58,6 +58,10 @@ public class KonyvDao {
 		
 		return id;
 	}
+	/**
+	 * Műfaj szerint sorrendbe rakva lekéri az összes könyvet.
+	 * @return
+	 */
 	public static List<Konyv> getKonyvekMufajSzerint(){
 		List<Konyv> list=new ArrayList<Konyv>();
 		try {
@@ -84,6 +88,10 @@ public class KonyvDao {
 		}
 		return list;
 	}
+	/**
+	 * Alműfaj szerint sorrendbe rakva lekéri az összes könyvet.
+	 * @return
+	 */
 	public static List<Konyv> getKonyvekAlmufajSzerint(){
 		List<Konyv> list=new ArrayList<Konyv>();
 		try {
@@ -104,6 +112,34 @@ public class KonyvDao {
 				}
 			}finally{
 				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	/**
+	 * Egy áruház könyveit listázza.
+	 * @param aruhazId
+	 * @return
+	 */
+	public static List<Konyv> getKonyvekAruhazSzerint(int aruhazId){
+		List<Konyv> list=new ArrayList<Konyv>();
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+					+ "ID,CIM, OLDALSZAM, KIADIDO, HANYADIKKIADAS, SZERZO, TARSSZERZO, KIADO, VASARLASSZAM, MERET, KOTES, AR, MUFAJ, ALMUFAJ, EBOOK,CSAKEB, ISBN13"
+					+ " FROM KONYV,RAKTAR where RAKTAR.ARUHAZID=? and RAKTAR.TERMEKTIPUS like 'konyv' and RAKTAR.TERMEKID=KONYV.ID");
+			s.setInt(1, aruhazId);
+			ResultSet rs=s.executeQuery();
+			try{
+				while(rs.next()){
+					list.add(new Konyv(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4),
+							rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+							rs.getString(10), rs.getString(11),rs.getInt(12), rs.getString(13), rs.getString(14),
+							rs.getBoolean(15), rs.getBoolean(16), rs.getInt(17)));
+				}
+			}finally{
+				rs.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

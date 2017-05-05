@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import dao.KonyvDao;
 import dao.KonyvesboltDao;
+import dao.RaktarDao;
 import model.Konyv;
 
 public class Main {
@@ -38,6 +39,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					KonyvesboltDao.connect(username.getText(), new String(password.getPassword()));
+					RaktarDao.keszletCsokkentes(1, 3, "konyv");
 					JOptionPane.showMessageDialog(login,
 						    "Sikerült");
 					login.setVisible(false);

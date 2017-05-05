@@ -10,6 +10,10 @@ import java.util.Objects;
 import oracle.jdbc.pool.OracleDataSource;
 
 public class KonyvesboltDao {
+	public static final String TERMEK_TIPUS_KONYV="konyv";
+	public static final String TERMEK_TIPUS_FILM="film";
+	public static final String TERMEK_TIPUS_ALBUM="album";
+	
 	private static OracleDataSource ods;
 	private static Connection conn;
 	public static Connection connect(String username,String password) throws SQLException{
@@ -19,8 +23,11 @@ public class KonyvesboltDao {
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} 
-		    ods.setURL("jdbc:oracle:thin:@localhost:1521:kabinet"); 
+		    ods.setURL("jdbc:oracle:thin:@localhost:1521:kabinet");
 		    conn = ods.getConnection(username,password);
+		    Statement s=createStatement();
+		    s.executeQuery("alter session set current_schema=h670182");
+		    s.close();
 		    return conn;
 	}
 	public static Statement createStatement() throws SQLException{
