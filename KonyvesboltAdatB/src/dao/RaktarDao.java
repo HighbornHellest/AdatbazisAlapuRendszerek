@@ -3,8 +3,13 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import model.Album;
+import model.Aruhaz;
 import model.Raktar;
+import model.Termek;
 
 /**
  * @author Tamássy Urmás
@@ -113,5 +118,32 @@ public class RaktarDao {
 			e.printStackTrace();
 		}
 		return id;
+	}
+	public static List<Raktar> getRaktarak(){
+		List<Raktar> list=new ArrayList<Raktar>();
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+			+ "RAKTAR.ID,RAKTAR.TERMEKID,RAKTAR.TERMEKTIPUS,RAKTAR.DARAB,RAKTAR.ARUHAZID,ARUHAZ.CIM,ARUHAZ.DOLGOZOSZAM,ARUHAZ.NYITVATART"
+			+ " FROM RAKTAR,ARUHAZ WHERE RAKTAR.ARUHAZID=ARUHAZ.ID");
+			try{
+				ResultSet rs=s.executeQuery();
+				try{
+					while(rs.next()){
+						String termekTipus=rs.getString(3);
+						int termekId=rs.getInt(2);
+						Termek termek=TermekDao.getTermek(termekId, termekTipus);
+						list.add(new Raktar(rs.getInt(1), termek,
+								rs.getInt(4), new Aruhaz(rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8))));
+					}
+				}finally{
+					rs.close();
+				}
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

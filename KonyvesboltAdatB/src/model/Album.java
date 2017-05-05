@@ -1,10 +1,12 @@
 package model;
 
+import dao.KonyvesboltDao;
+
 public class Album extends Termek{
 	private String eloado;
 	private String mufaj;
 	public Album(int id, String eloado, String cim, String mufaj, int ar) {
-		super(id, cim, ar);
+		super(id, cim, ar, KonyvesboltDao.TERMEK_TIPUS_ALBUM);
 		this.eloado = eloado;
 		this.mufaj = mufaj;
 	}

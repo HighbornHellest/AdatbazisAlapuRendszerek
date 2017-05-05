@@ -3,8 +3,11 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Album;
+import model.Konyv;
 
 /**
  * @author Tamássy Urmás
@@ -42,5 +45,52 @@ public class AlbumDao {
 		}
 		
 		return id;
+	}
+	public static List<Album> getAlbumok(){
+		List<Album> list=new ArrayList<Album>();
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+			+ "ID,ELOADO,CIM,MUFAJ,AR"
+			+ " FROM ALBUM");
+			try{
+				ResultSet rs=s.executeQuery();
+				try{
+					while(rs.next()){
+						list.add(new Album(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+					}
+				}finally{
+					rs.close();
+				}
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public static Album getAlbumIdSzerint(int AlbumId){
+		Album album=null;
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+			+ "ID,ELOADO,CIM,MUFAJ,AR"
+			+ " FROM ALBUM where ID=?");
+			try{
+				s.setInt(1, AlbumId);
+				ResultSet rs=s.executeQuery();
+				try{
+					if(rs.next()){
+						album=new Album(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+					}
+				}finally{
+					rs.close();
+				}
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return album;
 	}
 }

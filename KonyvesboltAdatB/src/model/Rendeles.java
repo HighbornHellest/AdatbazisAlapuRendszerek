@@ -5,10 +5,13 @@ public class Rendeles {
 	private Termek termek;
 	private Vasarlo vasarlo;
 	private int rendelesId;
-	public Rendeles(int id, int rendelesId) {
+	
+	public Rendeles(int id, Termek termek, Vasarlo vasarlo, int rendelesId) {
 		super();
 		this.id = id;
-		this.rendelesId=rendelesId;
+		this.termek = termek;
+		this.vasarlo = vasarlo;
+		this.rendelesId = rendelesId;
 	}
 	public int getId() {
 		return id;

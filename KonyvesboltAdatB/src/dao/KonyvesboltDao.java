@@ -26,9 +26,15 @@ public class KonyvesboltDao {
 		    ods.setURL("jdbc:oracle:thin:@localhost:1521:kabinet");
 		    conn = ods.getConnection(username,password);
 		    Statement s=createStatement();
-		    s.executeQuery("alter session set current_schema=h670182");
-		    s.close();
+		    try{
+		    	s.executeQuery("alter session set current_schema=h670182");
+		    }finally{
+		    	s.close();
+		    }
 		    return conn;
+	}
+	public static void disconnect() throws SQLException{
+		conn.close();
 	}
 	public static Statement createStatement() throws SQLException{
 		Statement s=null;

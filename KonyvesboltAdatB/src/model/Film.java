@@ -1,12 +1,14 @@
 package model;
 
+import dao.KonyvesboltDao;
+
 public class Film extends Termek{
 
 	private String mufaj;
 	private boolean bluerayE;
 	private String rendezo;
 	public Film(int id, String cim, String mufaj, boolean bluerayE, String rendezo, int ar) {
-		super(id, cim, ar);
+		super(id, cim, ar,KonyvesboltDao.TERMEK_TIPUS_FILM);
 		this.mufaj = mufaj;
 		this.bluerayE = bluerayE;
 		this.rendezo = rendezo;

@@ -5,11 +5,12 @@ public class Termek {
 	private String cim;
 	private int ar;
 	private String tipus;
-	public Termek(int id, String cim, int ar) {
+	public Termek(int id, String cim, int ar, String tipus) {
 		super();
 		this.id = id;
 		this.cim = cim;
 		this.ar = ar;
+		this.tipus=tipus;
 	}
 	public int getId() {
 		return id;

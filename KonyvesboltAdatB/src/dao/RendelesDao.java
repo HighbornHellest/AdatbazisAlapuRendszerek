@@ -3,9 +3,12 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import model.Album;
 import model.Rendeles;
+import model.Vasarlo;
 
 /**
  * @author Tamássy Urmás
@@ -13,7 +16,7 @@ import model.Rendeles;
  */
 public class RendelesDao {
 	/**
-	 * Hozzáad egy rendelést és visszatér a rendelés(!!!) id-jével
+	 * Hozzáad több rendelést és visszatér a rendelés(!!!) id-jével
 	 * @param rendelesek
 	 * @return
 	 */
@@ -72,5 +75,31 @@ public class RendelesDao {
 			e.printStackTrace();
 		}
 		return id;
+	}
+	public static List<Rendeles> getRendelesek(){
+		List<Rendeles> list=new ArrayList<Rendeles>();
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+			+ "RENDELES.ID,RENDELES.TERMEKID,RENDELES.TERMEKTIPUS,RENDELES.VASARLOID,RENDELES.RENDELESID,VASARLO.NEV, VASARLO.SZAMLACIM,"
+			+ "VASARLO.SZALLITCIM, VASARLO.SZALLITCIM2, VASARLO.TORZSE, VASARLO.OSSZESKOLTSEG,VASARLO.TETELSZAM"
+			+ " FROM RENDELES,VASARLO WHERE VASARLO.ID=RENDELES.VASARLOID");
+			try{
+				ResultSet rs=s.executeQuery();
+				try{
+					while(rs.next()){
+						list.add(new Rendeles(rs.getInt(1),TermekDao.getTermek(rs.getInt(2), rs.getString(3)),
+								new Vasarlo(rs.getInt(4), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10),
+										rs.getInt(11), rs.getInt(12)),rs.getInt(5)));
+					}
+				}finally{
+					rs.close();
+				}
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

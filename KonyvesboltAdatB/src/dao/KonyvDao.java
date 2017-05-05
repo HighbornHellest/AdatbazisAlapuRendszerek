@@ -146,4 +146,27 @@ public class KonyvDao {
 		}
 		return list;
 	}
+	public static Konyv getKonyvIdSzerint(int konyvId){
+		Konyv konyv=null;
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+					+ "ID,CIM, OLDALSZAM, KIADIDO, HANYADIKKIADAS, SZERZO, TARSSZERZO, KIADO, VASARLASSZAM, MERET, KOTES, AR, MUFAJ, ALMUFAJ, EBOOK,CSAKEB, ISBN13"
+					+ " FROM KONYV where ID=?");
+			s.setInt(1, konyvId);
+			ResultSet rs=s.executeQuery();
+			try{
+				if(rs.next()){
+					konyv=new Konyv(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4),
+							rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+							rs.getString(10), rs.getString(11),rs.getInt(12), rs.getString(13), rs.getString(14),
+							rs.getBoolean(15), rs.getBoolean(16), rs.getInt(17));
+				}
+			}finally{
+				rs.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return konyv;
+	}
 }

@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Date;
 
+import dao.KonyvesboltDao;
+
 public class Konyv extends Termek{
 	private int oldalSzam;
 	private Date kiadIdo;
@@ -22,7 +24,7 @@ public class Konyv extends Termek{
 	public Konyv(int id, String cim, int oldalSzam, Date kiadIdo, String hanyadikKiadas, String szerzo,
 			String tarsSzerzo, String kiado, int vasarlasSzam, String meret, String kotes, int ar, String mufaj,
 			String alMufaj, boolean ebook, boolean csakEb, int isbn13) {
-		super(id, cim, ar);
+		super(id, cim, ar, KonyvesboltDao.TERMEK_TIPUS_KONYV);
 		this.oldalSzam = oldalSzam;
 		this.kiadIdo = kiadIdo;
 		this.hanyadikKiadas = hanyadikKiadas;
