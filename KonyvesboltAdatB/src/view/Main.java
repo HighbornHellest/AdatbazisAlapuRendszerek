@@ -43,8 +43,8 @@ public class Main {
 					JOptionPane.showMessageDialog(login,
 						    "Sikerült");
 					login.setVisible(false);
-					new MainFrame();
 					login.dispose();
+					Core core=new Core();
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(login,
 						    e1.getMessage());
