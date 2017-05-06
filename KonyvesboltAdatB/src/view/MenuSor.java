@@ -9,7 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 /**
- * @author SZLXAGT.SZE Sz˚rszabÛ Levente  h669845
+ * @author SZLXAGT.SZE Sz√ªrszab√≥ Levente  h669845
  */
 
 
@@ -25,7 +25,7 @@ public class MenuSor extends JMenuBar implements ActionListener
 	 */
 	private Frame gui;
 	@Override
-	public void actionPerformed(ActionEvent e) //itt vanakka a kiÌr·sok a t·bl·zatba!
+	public void actionPerformed(ActionEvent e) //itt vanakka a ki√≠r√°sok a t√°bl√°zatba!
 	{
 	    String actionCommand = e.getActionCommand();
 		System.out.println(actionCommand);
@@ -33,7 +33,7 @@ public class MenuSor extends JMenuBar implements ActionListener
 		
 	/*	if (actionCommand.equals("konyv"))
 		{
-			System.out.println("Kˆnyv");
+			System.out.println("K√∂nyv");
 			
 		}*/
 		switch(actionCommand)
@@ -96,16 +96,16 @@ public class MenuSor extends JMenuBar implements ActionListener
 		
 		}
 		
-		/* ezelapj·n kÈne megcisn·lni de ehhez kell a DAO-s cucc ameddig az nincs meg Èn nem tudom folytatni
+		/* ezelapj√°n k√©ne megcisn√°lni de ehhez kell a DAO-s cucc ameddig az nincs meg √©n nem tudom folytatni
 		 * 
 		 *  List<Customer> customers = gui.getController().getCustomers();
 
-            // Csin·lunk egy t·bl·zatot, a CustomerTableModel alapjan, ami
+            // Csin√°lunk egy t√°bl√°zatot, a CustomerTableModel alapjan, ami
             // megkapja a controltol a customereket
             JTable table = new JTable(new CustomerTableModel(customers));
 
-            // A t·blazatot r·rakjuk egy ScrollPane-re, Ìgy ha az t˙l nagy lenne
-            // az ablak mÈretÈhez kÈpest, akkor is gˆrgetheto lesz
+            // A t√°blazatot r√°rakjuk egy ScrollPane-re, √≠gy ha az t√∫l nagy lenne
+            // az ablak m√©ret√©hez k√©pest, akkor is g√∂rgetheto lesz
             JScrollPane container = new JScrollPane(table);
 		 * 
 		 * */
@@ -139,22 +139,22 @@ public class MenuSor extends JMenuBar implements ActionListener
 	}
     private void createMenuPoint(String name, String... subnames)
     {
-        // LÈtrehozunk egy menupontot az elsı paramÈter alapj·n
+        // L√©trehozunk egy menupontot az els√µ param√©ter alapj√°n
         JMenu menu = new JMenu(name);
 
-        // A menupontot hozz·adjuk a BookShopMenuBar-hoz
+        // A menupontot hozz√°adjuk a BookShopMenuBar-hoz
         this.add(menu);
 
-        // Az egyes menu itemeket a maradÈk paramÈter ÈrtÈkeivel hozzuk lÈtre
+        // Az egyes menu itemeket a marad√©k param√©ter √©rt√©keivel hozzuk l√©tre
         for (String subname : subnames) {
             JMenuItem menuItem = new JMenuItem(subname);
 
             menu.add(menuItem);
 
-            // Minden egyes menu itemet figyel¸nk
-            // A menu itemek esetÈn a megfigyelÈst az ActionListener interfÈsz
-            // biztosÌtja, ezÈrt a menubar implement·lja ezt az interfÈszt Ès
-            // fel¸lÌrja az actionPerformed metÛdust
+            // Minden egyes menu itemet figyel√ºnk
+            // A menu itemek eset√©n a megfigyel√©st az ActionListener interf√©sz
+            // biztos√≠tja, ez√©rt a menubar implement√°lja ezt az interf√©szt √©s
+            // fel√ºl√≠rja az actionPerformed met√≥dust
             menuItem.addActionListener(this);
         }
     }
