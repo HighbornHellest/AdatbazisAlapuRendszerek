@@ -59,6 +59,36 @@ public class KonyvDao {
 		return id;
 	}
 	/**
+	 * Lekéri az összes könyvet.
+	 * @return
+	 */
+	public static List<Konyv> getKonyvek(){
+		List<Konyv> list=new ArrayList<Konyv>();
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
+			+ "ID,CIM, OLDALSZAM, KIADIDO, HANYADIKKIADAS, SZERZO, TARSSZERZO, KIADO, VASARLASSZAM, MERET, KOTES, AR, MUFAJ, ALMUFAJ, EBOOK,CSAKEB, ISBN13"
+			+ " FROM KONYV");
+			try{
+				ResultSet rs=s.executeQuery();
+				try{
+					while(rs.next()){
+						list.add(new Konyv(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4),
+								rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+								rs.getString(10), rs.getString(11),rs.getInt(12), rs.getString(13), rs.getString(14),
+								rs.getBoolean(15), rs.getBoolean(16), rs.getInt(17)));
+					}
+				}finally{
+					rs.close();
+				}
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	/**
 	 * Műfaj szerint sorrendbe rakva lekéri az összes könyvet.
 	 * @return
 	 */
