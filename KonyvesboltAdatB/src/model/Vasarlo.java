@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Vasarlo {
 	private int id;
 	private String nev;

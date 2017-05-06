@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Raktar {
 	private int id;
 	private Termek termek;

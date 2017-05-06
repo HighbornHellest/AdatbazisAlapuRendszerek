@@ -2,6 +2,10 @@ package model;
 
 import java.sql.Date;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Alkalmazott {
 	private int id;
 	private String nev;

@@ -9,12 +9,12 @@ import java.util.List;
 import model.Kedvezmeny;
 
 /**
- * @author Tamássy Urmás
+ * @author TamÃ¡ssy UrmÃ¡s
  *
  */
 public class KedvezmenyDao {
 	/**
-	 * Hozzáad egy kedvezményt
+	 * HozzÃ¡ad egy kedvezmÃ©nyt
 	 * @param kedvezmeny
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class KedvezmenyDao {
 		return id;
 	}
 	/**
-	 * Lekéri az összes kedvezményt
+	 * LekÃ©ri az Ã¶sszes kedvezmÃ©nyt
 	 * @return
 	 */
 	public static List<Kedvezmeny> getKedvezmenyek(){

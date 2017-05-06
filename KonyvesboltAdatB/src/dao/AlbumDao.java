@@ -9,12 +9,12 @@ import java.util.List;
 import model.Album;
 
 /**
- * @author Tamássy Urmás
+ * @author TamÃ¡ssy UrmÃ¡s
  *
  */
 public class AlbumDao {
 	/**
-	 * Albumok hozzáadása
+	 * Albumok hozzÃ¡adÃ¡sa
 	 * @param album
 	 * @return
 	 */
@@ -46,7 +46,7 @@ public class AlbumDao {
 		return id;
 	}
 	/**
-	 * Lekéri az összes albumot
+	 * LekÃ©ri az Ã¶sszes albumot
 	 * @return
 	 */
 	public static List<Album> getAlbumok(){

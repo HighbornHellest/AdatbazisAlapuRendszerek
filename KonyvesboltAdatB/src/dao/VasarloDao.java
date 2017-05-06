@@ -8,12 +8,12 @@ import java.util.List;
 import model.Vasarlo;
 
 /**
- * @author Tamássy Urmás
+ * @author TamÃ¡ssy UrmÃ¡s
  *
  */
 public class VasarloDao {
 	/**
-	 * Hozzáad egy vásárlót
+	 * HozzÃ¡ad egy vÃ¡sÃ¡rlÃ³t
 	 * @param vasarlo
 	 * @return
 	 */
@@ -50,7 +50,7 @@ public class VasarloDao {
 	}
 	
 	/**
-	 * Lekéri az összes vásárlót
+	 * LekÃ©ri az Ã¶sszes vÃ¡sÃ¡rlÃ³t
 	 * @return
 	 */
 	public static List<Vasarlo> getVasarlok(){

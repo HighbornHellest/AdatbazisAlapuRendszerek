@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Termek {
 	private int id;
 	private String cim;

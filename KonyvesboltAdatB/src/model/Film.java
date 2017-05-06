@@ -2,6 +2,10 @@ package model;
 
 import dao.KonyvesboltDao;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Film extends Termek{
 
 	private String mufaj;

@@ -8,12 +8,12 @@ import java.util.List;
 import model.Film;
 
 /**
- * @author Tam·ssy Urm·s
+ * @author Tam√°ssy Urm√°s
  *
  */
 public class FilmDao {
 	/**
-	 * Filmek hozz·ad·sa
+	 * Filmek hozz√°ad√°sa
 	 * @param film
 	 * @return
 	 */
@@ -46,7 +46,7 @@ public class FilmDao {
 		return id;
 	}
 	/**
-	 * LekÈri az ˆsszes filmet
+	 * Lek√©ri az √∂sszes filmet
 	 * @return
 	 */
 	public static List<Film> getFilmek(){
@@ -73,7 +73,7 @@ public class FilmDao {
 		return list;
 	}
 	/**
-	 * LekÈr egy filmet id alapj·n
+	 * Lek√©r egy filmet id alapj√°n
 	 * @param filmId
 	 * @return
 	 */

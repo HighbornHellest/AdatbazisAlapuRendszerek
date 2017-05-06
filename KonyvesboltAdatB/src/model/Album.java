@@ -2,6 +2,10 @@ package model;
 
 import dao.KonyvesboltDao;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Album extends Termek{
 	private String eloado;
 	private String mufaj;

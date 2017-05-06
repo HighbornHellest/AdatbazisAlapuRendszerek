@@ -9,12 +9,12 @@ import model.Alkalmazott;
 import model.Aruhaz;
 
 /**
- * @author Tam·ssy Urm·s
+ * @author Tam√°ssy Urm√°s
  *
  */
 public class AlkalmazottDao {
 	/**
-	 * Hozz·ad egy alkalmazottat
+	 * Hozz√°ad egy alkalmazottat
 	 * @param alkalmazott
 	 * @return
 	 */
@@ -48,7 +48,7 @@ public class AlkalmazottDao {
 		return id;
 	}
 	/**
-	 * LekÈri az ˆsszesa alkalmazottat
+	 * Lek√©ri az √∂sszes alkalmazottat
 	 * @return
 	 */
 	public static List<Alkalmazott> getAlkalmazottak(){

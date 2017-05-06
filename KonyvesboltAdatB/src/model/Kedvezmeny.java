@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Kedvezmeny {
 	private int id;
 	private Konyv konyv;

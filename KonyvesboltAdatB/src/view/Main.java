@@ -3,7 +3,6 @@ package view;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -13,13 +12,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import dao.KonyvDao;
 import dao.KonyvesboltDao;
 import dao.RaktarDao;
-import model.Konyv;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Main {
-	private static KonyvesboltDao kbdao;
 	public static void main(String[] args) {
 		JFrame login=new JFrame("login");
 		login.setLayout(new GridLayout(3, 2));
@@ -39,9 +39,8 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					KonyvesboltDao.connect(username.getText(), new String(password.getPassword()));
-					RaktarDao.keszletCsokkentes(1, 3, "konyv");
 					JOptionPane.showMessageDialog(login,
-						    "Siker�lt");
+						    "Sikerült");
 					login.setVisible(false);
 					login.dispose();
 					Core core=new Core();

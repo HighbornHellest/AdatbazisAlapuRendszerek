@@ -5,18 +5,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Album;
 import model.Rendeles;
 import model.Vasarlo;
 
 /**
- * @author Tamássy Urmás
+ * @author TamÃ¡ssy UrmÃ¡s
  *
  */
 public class RendelesDao {
 	/**
-	 * Hozzáad több rendelést és visszatér a rendelés(!!!) id-jével
+	 * HozzÃ¡ad tÃ¶bb rendelÃ©st Ã©s visszatÃ©r a rendelÃ©s(!!!) id-jÃ©vel
 	 * @param rendelesek
 	 * @return
 	 */
@@ -45,7 +43,7 @@ public class RendelesDao {
 		return rendelesId;
 	}
 	/**
-	 * Hozzáad egy sort a rendelés táblába (használd az addrendelesek-et). Visszatér a sor id-jével
+	 * HozzÃ¡ad egy sort a rendelÃ©s tÃ¡blÃ¡ba (hasznÃ¡ld az addrendelesek-et). VisszatÃ©r a sor id-jÃ©vel
 	 * @param rendeles
 	 * @return
 	 */
@@ -77,7 +75,7 @@ public class RendelesDao {
 		return id;
 	}
 	/**
-	 * Lekéri az összes rendelést
+	 * LekÃ©ri az Ã¶sszes rendelÃ©st
 	 * @return
 	 */
 	public static List<Rendeles> getRendelesek(){

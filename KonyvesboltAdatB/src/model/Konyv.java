@@ -4,6 +4,10 @@ import java.sql.Date;
 
 import dao.KonyvesboltDao;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class Konyv extends Termek{
 	private int oldalSzam;
 	private Date kiadIdo;

@@ -9,12 +9,12 @@ import java.util.List;
 import model.Aruhaz;
 
 /**
- * @author Tamássy Urmás
+ * @author TamÃ¡ssy UrmÃ¡s
  *
  */
 public class AruhazDao {
 	/**
-	 * Hozzáad egy áruházat
+	 * HozzÃ¡ad egy Ã¡ruhÃ¡zat
 	 * @param aruhaz
 	 * @return
 	 */
@@ -45,7 +45,7 @@ public class AruhazDao {
 		return id;
 	}
 	/**
-	 * Lekéri az összes Áruházat
+	 * LekÃ©ri az Ã¶sszes ÃruhÃ¡zat
 	 * @return
 	 */
 	public static List<Aruhaz> getAruhazak(){

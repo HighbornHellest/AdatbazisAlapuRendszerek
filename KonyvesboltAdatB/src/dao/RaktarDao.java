@@ -5,19 +5,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Album;
 import model.Aruhaz;
 import model.Raktar;
 import model.Termek;
 
+
 /**
- * @author Tamássy Urmás
+ * @author TamÃ¡ssy UrmÃ¡s
  *
  */
 public class RaktarDao {
 	/**
-	 * Id alapján módosít egy sort.
+	 * Id alapjÃ¡n mÃ³dosÃ­t egy sort.
 	 * @param raktarId
 	 * @param raktar
 	 */
@@ -41,7 +40,7 @@ public class RaktarDao {
 		
 	}
 	/**
-	 *  Csökkenti egy sor(termék és áruház alapján)) darab attribútumát 1-el.
+	 *  CsÃ¶kkenti egy sor(termÃ©k Ã©s Ã¡ruhÃ¡z alapjÃ¡n) darab attribÃºtumÃ¡t 1-el.
 	 * @param aruhazId
 	 * @param termekId
 	 * @param termekTipus
@@ -63,7 +62,7 @@ public class RaktarDao {
 		
 	}
 	/**
-	 * Lekéri a termék készletét, -1 ha nincs találat.
+	 * LekÃ©ri a termÃ©k kÃ©szletÃ©t, -1 ha nincs talÃ¡lat.
 	 * @param aruhazId
 	 * @param termekId
 	 * @param termekTipus
@@ -94,7 +93,7 @@ public class RaktarDao {
 		return darab;
 	}
 	/**
-	 * Hozzáad egy raktárat (adott termék darabszámmal)
+	 * HozzÃ¡ad egy raktÃ¡rat (adott termÃ©k darabszÃ¡mmal)
 	 * @param raktar
 	 * @return
 	 */
@@ -125,7 +124,7 @@ public class RaktarDao {
 		return id;
 	}
 	/**
-	 * Visszaadja az összes tárolt terméket
+	 * Visszaadja az Ã¶sszes tÃ¡rolt termÃ©ket
 	 * @return
 	 */
 	public static List<Raktar> getRaktarak(){
