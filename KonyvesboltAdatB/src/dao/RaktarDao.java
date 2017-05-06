@@ -93,6 +93,11 @@ public class RaktarDao {
 		}
 		return darab;
 	}
+	/**
+	 * Hozzáad egy raktárat (adott termék darabszámmal)
+	 * @param raktar
+	 * @return
+	 */
 	public static int addRaktar(Raktar raktar){
 		int id=-1;
 		try {
@@ -119,6 +124,10 @@ public class RaktarDao {
 		}
 		return id;
 	}
+	/**
+	 * Visszaadja az összes tárolt terméket
+	 * @return
+	 */
 	public static List<Raktar> getRaktarak(){
 		List<Raktar> list=new ArrayList<Raktar>();
 		try {

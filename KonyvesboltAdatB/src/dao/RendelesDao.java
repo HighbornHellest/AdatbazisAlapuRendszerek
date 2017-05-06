@@ -76,6 +76,10 @@ public class RendelesDao {
 		}
 		return id;
 	}
+	/**
+	 * Lekéri az összes rendelést
+	 * @return
+	 */
 	public static List<Rendeles> getRendelesek(){
 		List<Rendeles> list=new ArrayList<Rendeles>();
 		try {

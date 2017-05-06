@@ -12,7 +12,7 @@ public class Alkalmazott {
 	private String cim;
 	private Aruhaz aruhaz;
 	public Alkalmazott(int id, String nev, Date szulIdo, int fizetes, String beosztas, String munkaviszony,
-			String cim) {
+			String cim,Aruhaz aruhaz) {
 		super();
 		this.id = id;
 		this.nev = nev;
@@ -21,6 +21,7 @@ public class Alkalmazott {
 		this.beosztas = beosztas;
 		this.munkaviszony = munkaviszony;
 		this.cim = cim;
+		this.aruhaz=aruhaz;
 	}
 	public int getId() {
 		return id;

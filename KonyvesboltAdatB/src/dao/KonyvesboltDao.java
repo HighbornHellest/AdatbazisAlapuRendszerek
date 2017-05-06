@@ -9,6 +9,10 @@ import java.util.Objects;
 
 import oracle.jdbc.pool.OracleDataSource;
 
+/**
+ * @author Tamássy Urmás
+ *
+ */
 public class KonyvesboltDao {
 	public static final String TERMEK_TIPUS_KONYV="konyv";
 	public static final String TERMEK_TIPUS_FILM="film";
@@ -16,6 +20,13 @@ public class KonyvesboltDao {
 	
 	private static OracleDataSource ods;
 	private static Connection conn;
+	/**
+	 * Megnyitja a kapcsolatot az adatbázissal
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Connection connect(String username,String password) throws SQLException{
 			ods = new OracleDataSource(); 
 		    try {
@@ -33,9 +44,18 @@ public class KonyvesboltDao {
 		    }
 		    return conn;
 	}
+	/**
+	 * Lezárja a kapcsolatot.
+	 * @throws SQLException
+	 */
 	public static void disconnect() throws SQLException{
 		conn.close();
 	}
+	/**
+	 * Dao műveletekhez szükséges segédfüggvény
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Statement createStatement() throws SQLException{
 		Statement s=null;
 		if(!Objects.equals(conn, null)){
@@ -43,6 +63,13 @@ public class KonyvesboltDao {
 		}
 		return s;
 	}
+	/**
+	 * Dao műveletekhez szükséges segédfüggvény
+	 * @param sql
+	 * @param generatedKeys
+	 * @return
+	 * @throws SQLException
+	 */
 	public static PreparedStatement createPreparedStatement(String sql,String[] generatedKeys) throws SQLException{
 		PreparedStatement s=null;
 		if(!Objects.equals(conn, null)){
@@ -50,6 +77,12 @@ public class KonyvesboltDao {
 		}
 		return s;
 	}
+	/**
+	 * Dao műveletekhez szükséges segédfüggvény
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public static PreparedStatement createPreparedStatement(String sql) throws SQLException{
 		PreparedStatement s=null;
 		if(!Objects.equals(conn, null)){

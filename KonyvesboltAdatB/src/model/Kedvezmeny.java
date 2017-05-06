@@ -4,9 +4,11 @@ public class Kedvezmeny {
 	private int id;
 	private Konyv konyv;
 	private int kedvezmenySzazalek;
-	public Kedvezmeny(int id, int kedvezmenySzazalek) {
+	
+	public Kedvezmeny(int id, Konyv konyv, int kedvezmenySzazalek) {
 		super();
 		this.id = id;
+		this.konyv = konyv;
 		this.kedvezmenySzazalek = kedvezmenySzazalek;
 	}
 	public int getId() {

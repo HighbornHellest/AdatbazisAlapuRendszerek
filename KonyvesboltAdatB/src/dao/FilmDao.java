@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Album;
 import model.Film;
 
 /**
@@ -47,6 +45,10 @@ public class FilmDao {
 		
 		return id;
 	}
+	/**
+	 * Lekéri az összes filmet
+	 * @return
+	 */
 	public static List<Film> getFilmek(){
 		List<Film> list=new ArrayList<Film>();
 		try {
@@ -70,6 +72,11 @@ public class FilmDao {
 		}
 		return list;
 	}
+	/**
+	 * Lekér egy filmet id alapján
+	 * @param filmId
+	 * @return
+	 */
 	public static Film getFilmIdSzerint(int filmId){
 		Film film=null;
 		try {

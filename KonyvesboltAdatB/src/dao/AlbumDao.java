@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Album;
-import model.Konyv;
 
 /**
  * @author Tamássy Urmás
@@ -20,7 +19,7 @@ public class AlbumDao {
 	 * @return
 	 */
 	public static int addAlbum(Album album){
-		int id=0;
+		int id=-1;
 		try {
 			PreparedStatement s=KonyvesboltDao.createPreparedStatement("INSERT INTO ALBUM(ELOADO, CIM, MUFAJ, AR)"+
 		" VALUES (?, ?, ?, ?)"
@@ -46,6 +45,10 @@ public class AlbumDao {
 		
 		return id;
 	}
+	/**
+	 * Lekéri az összes albumot
+	 * @return
+	 */
 	public static List<Album> getAlbumok(){
 		List<Album> list=new ArrayList<Album>();
 		try {

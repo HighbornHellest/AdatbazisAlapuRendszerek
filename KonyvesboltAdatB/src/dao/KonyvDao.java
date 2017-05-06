@@ -146,6 +146,11 @@ public class KonyvDao {
 		}
 		return list;
 	}
+	/**
+	 * Lekér egy könyvet id alapján
+	 * @param konyvId
+	 * @return
+	 */
 	public static Konyv getKonyvIdSzerint(int konyvId){
 		Konyv konyv=null;
 		try {
