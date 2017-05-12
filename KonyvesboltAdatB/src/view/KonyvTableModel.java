@@ -13,6 +13,10 @@ public class KonyvTableModel extends AbstractTableModel {
 
 	private List<Konyv> konyvek = KonyvDao.getKonyvek();
 
+	public KonyvTableModel() {
+		super();
+	}
+
 	public List<Konyv> getKonyvek() {
 		return konyvek;
 	}
