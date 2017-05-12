@@ -72,14 +72,14 @@ public class AlbumDao {
 		}
 		return list;
 	}
-	public static Album getAlbumIdSzerint(int AlbumId){
+	public static Album getAlbumIdSzerint(int albumId){
 		Album album=null;
 		try {
 			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT "
 			+ "ID,ELOADO,CIM,MUFAJ,AR"
 			+ " FROM ALBUM where ID=?");
 			try{
-				s.setInt(1, AlbumId);
+				s.setInt(1, albumId);
 				ResultSet rs=s.executeQuery();
 				try{
 					if(rs.next()){
@@ -95,5 +95,22 @@ public class AlbumDao {
 			e.printStackTrace();
 		}
 		return album;
+	}
+	public static void updateAlbum(int albumId,Album album){
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE ALBUM SET ELOADO=?, CIM=?, MUFAJ=?, AR=? WHERE ID=?");
+			try{
+				s.setString(1, album.getEloado());
+				s.setString(2, album.getCim());
+				s.setString(3, album.getMufaj());
+				s.setInt(4, album.getAr());
+				s.setInt(5, albumId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

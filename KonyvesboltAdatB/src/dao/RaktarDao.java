@@ -4,7 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import model.Aruhaz;
 import model.Raktar;
 import model.Termek;
@@ -153,5 +156,27 @@ public class RaktarDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public Map<String,Integer> getKonyvDarabMufajSzerint(){
+		HashMap<String, Integer> result=new HashMap<String,Integer>();
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("SELECT SUM(RAKTAR.DARAB),KONYV.MUFAJ FROM RAKTAR,KONYV WHERE RAKTAR.TERMEKID=KONYV.ID AND RAKTAR.TERMEKTIPUS LIKE ?");
+			try{
+				s.setString(1, KonyvesboltDao.TERMEK_TIPUS_KONYV);
+				ResultSet rs=s.executeQuery();
+				try{
+					while(rs.next()){
+						result.put(rs.getString(2), rs.getInt(1));
+					}
+				}finally{
+					rs.close();
+				}
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

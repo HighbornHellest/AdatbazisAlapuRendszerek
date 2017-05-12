@@ -63,9 +63,8 @@ public class Frame extends JFrame
 		
 		
 		//this.add(gomb);
-		//itt van hozzáadva a felsõ sor
+		//itt van hozzï¿½adva a felsï¿½ sor
 		this.add(Menu);
-		
 	}
 
 

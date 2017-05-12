@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Album;
 import model.Alkalmazott;
 import model.Aruhaz;
 
@@ -75,5 +77,26 @@ public class AlkalmazottDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public static void updateAlkalmazott(int alkalmazottId,Alkalmazott alkalmazott){
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE ALKALMAZOTT SET NEV=?, SZULIDO=?, FIZETES=?,"
+					+ " BEOSZTAS=?, MUNKAVISZONY=?,CIM=?,ARUHAZID=? WHERE ID=?");
+			try{
+				s.setString(1, alkalmazott.getNev());
+				s.setDate(2, alkalmazott.getSzulIdo());
+				s.setInt(3, alkalmazott.getFizetes());
+				s.setString(4, alkalmazott.getBeosztas());
+				s.setString(5, alkalmazott.getMunkaviszony());
+				s.setString(6, alkalmazott.getCim());
+				s.setInt(7, alkalmazott.getAruhaz().getId());
+				s.setInt(8, alkalmazottId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Album;
 import model.Aruhaz;
 
 /**
@@ -70,5 +71,22 @@ public class AruhazDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public static void updateAruhaz(int aruhazId,Aruhaz aruhaz){
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE ARUHAZ SET CIM=?, DOLGOZOSZAM=?,"
+					+ " NYITVATART=? WHERE ID=?");
+			try{
+				s.setString(1, aruhaz.getCim());
+				s.setInt(2, aruhaz.getDolgozoSzam());
+				s.setString(3, aruhaz.getNyitvatart());
+				s.setInt(4, aruhazId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

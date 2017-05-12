@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Kedvezmeny;
 import model.Vasarlo;
 
 /**
@@ -76,5 +78,25 @@ public class VasarloDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public static void updateVasarlo(int vasarloId,Vasarlo vasarlo){
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE VASARLO NEV=?,SZAMLACIM=?,SZALLITCIM=?,SZALLITCIM=?,TORZSE=?,OSSZESKOLTSEG=?,TETELSZAM=? WHERE ID=?");
+			try{
+				s.setString(1, vasarlo.getNev());
+				s.setString(2, vasarlo.getSzamlaCim());
+				s.setString(3, vasarlo.getSzallitCim());
+				s.setString(4, vasarlo.getSzallitCim2());
+				s.setBoolean(5, vasarlo.isTorzsE());
+				s.setInt(6, vasarlo.getOsszesKoltseg());
+				s.setInt(7, vasarlo.getTetelSzam());
+				s.setInt(8, vasarloId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

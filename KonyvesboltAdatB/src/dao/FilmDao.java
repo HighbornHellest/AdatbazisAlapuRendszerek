@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Album;
 import model.Film;
 
 /**
@@ -100,5 +102,23 @@ public class FilmDao {
 			e.printStackTrace();
 		}
 		return film;
+	}
+	public static void updateFilm(int filmId,Film film){
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE FILM SET CIM=?, MUFAJ=?, BLURAYE=?, RENDEZO=?,AR=? WHERE ID=?");
+			try{
+				s.setString(1, film.getCim());
+				s.setString(2, film.getMufaj());
+				s.setBoolean(3, film.isBluerayE());
+				s.setString(4, film.getRendezo());
+				s.setInt(5, film.getAr());
+				s.setInt(6, filmId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

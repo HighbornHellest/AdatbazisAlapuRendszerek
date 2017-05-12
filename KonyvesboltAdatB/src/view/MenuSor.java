@@ -28,7 +28,6 @@ public class MenuSor extends JMenuBar implements ActionListener
 	public void actionPerformed(ActionEvent e) //itt vanakka a kiírások a táblázatba!
 	{
 	    String actionCommand = e.getActionCommand();
-		System.out.println(actionCommand);
 		
 		
 	/*	if (actionCommand.equals("konyv"))
@@ -40,7 +39,9 @@ public class MenuSor extends JMenuBar implements ActionListener
 		{
 			case "Konyv":
 			{
-				System.out.println(actionCommand);
+				JTable table=new JTable(new KonyvTableModel());
+				gui.add(new JScrollPane(table));
+				gui.revalidate();
 				break;
 			}
 			case "Album":
