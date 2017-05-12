@@ -207,7 +207,7 @@ public class KonyvDao {
 	}
 	public static void updateKonyv(int konyvId,Konyv konyv){
 		try {
-			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE KONYV CIM=?, OLDALSZAM=?, KIADIDO=?, HANYADIKKIADAS=?, SZERZO=?, TARSSZERZO=?, KIADO=?, VASARLASSZAM=?, MERET=?, KOTES=?, AR=?, MUFAJ=?, ALMUFAJ=?, EBOOK=?,CSAKEB=?, ISBN13=? WHERE ID=?");
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE KONYV SET CIM=?, OLDALSZAM=?, KIADIDO=?, HANYADIKKIADAS=?, SZERZO=?, TARSSZERZO=?, KIADO=?, VASARLASSZAM=?, MERET=?, KOTES=?, AR=?, MUFAJ=?, ALMUFAJ=?, EBOOK=?,CSAKEB=?, ISBN13=? WHERE ID=?");
 			try{
 				s.setString(1, konyv.getCim());
 				s.setInt(2, konyv.getOldalSzam());
