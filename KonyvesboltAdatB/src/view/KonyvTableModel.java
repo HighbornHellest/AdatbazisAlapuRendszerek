@@ -7,7 +7,8 @@ import javax.swing.table.AbstractTableModel;
 import dao.KonyvDao;
 import model.Konyv;
 
-public class KonyvTableModel extends AbstractTableModel {
+public class KonyvTableModel extends AbstractTableModel
+{
 	private List<Konyv> konyvek = KonyvDao.getKonyvek();
 
 	public List<Konyv> getKonyvek() {
@@ -21,6 +22,26 @@ public class KonyvTableModel extends AbstractTableModel {
 	@Override
 	public int getColumnCount() {
 		return 17;
+	}
+
+	@Override
+	public String getColumnName(int column)
+	{
+		// TODO Auto-generated method stub
+		//return super.getColumnName(column);
+		switch(column)
+		{
+			case 0:
+			{
+				return "id";
+			
+			}
+			//todo minden név
+		
+		}
+		
+		
+		return super.getColumnName(column);
 	}
 
 	@Override
