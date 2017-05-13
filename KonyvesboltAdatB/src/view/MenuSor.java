@@ -74,6 +74,11 @@ public class MenuSor extends JMenuBar implements ActionListener
 				//visiblityk
 				album.setVisible(false);
 				album_scrollpane.setVisible(false);
+				film.setVisible(false);
+				film_scrollpane.setVisible(false);
+				kedvezmeny.setVisible(false);
+				kedvezmeny_scrollpane.setVisible(false);
+				
 				konyv.setVisible(true);
 				konyv_scrollpane.setVisible(true);
 				
@@ -89,6 +94,10 @@ public class MenuSor extends JMenuBar implements ActionListener
 				//visiblityk
 				konyv.setVisible(false);
 				konyv_scrollpane.setVisible(false);
+				film.setVisible(false);
+				film_scrollpane.setVisible(false);
+				kedvezmeny.setVisible(false);
+				kedvezmeny_scrollpane.setVisible(false);
 
 				album.setVisible(true);
 				album_scrollpane.setVisible(true);
@@ -113,11 +122,41 @@ public class MenuSor extends JMenuBar implements ActionListener
 			}
 			case "Film":
 			{
+				
+				//visiblityk
+				konyv.setVisible(false);
+				konyv_scrollpane.setVisible(false);
+				album.setVisible(false);
+				album_scrollpane.setVisible(false);
+				kedvezmeny.setVisible(false);
+				kedvezmeny_scrollpane.setVisible(false);
+				
+				film.setVisible(true);
+				film_scrollpane.setVisible(true);
+				
+				
+				gui.revalidate();
 				System.out.println(actionCommand);
 				break;
 			}
 			case "Kedvezmeny":
 			{
+				
+				//visiblityk
+				konyv.setVisible(false);
+				konyv_scrollpane.setVisible(false);
+				album.setVisible(false);
+				album_scrollpane.setVisible(false);
+				film.setVisible(false);
+				film_scrollpane.setVisible(false);
+				
+				kedvezmeny.setVisible(true);
+				kedvezmeny_scrollpane.setVisible(true);
+				
+				
+				
+				
+				gui.revalidate();
 				System.out.println(actionCommand);
 				break;
 			}
@@ -185,14 +224,17 @@ public class MenuSor extends JMenuBar implements ActionListener
 		 album_scrollpane.setVisible(false);
 		/*//alkalmazott
 		 alkalmazott= new JTable();
-		 alkalmazott_scrollpane;
+		 alkalmazott_scrollpane;*/
 		//film
-		 film= new JTable();
-		 film_scrollpane;
+		 film= new JTable(new FilmTableModel());
+		 film_scrollpane = new JScrollPane(film);
+		 film_scrollpane.setVisible(false);
 		//kedvezmeny
-		 kedvezmeny =new JTable();
-		 kedvezmeny_scrollpane;
-		//Raktar
+		 kedvezmeny = new JTable(new KedvezmenyTableModel());
+		 kedvezmeny_scrollpane = new JScrollPane(kedvezmeny);
+		 kedvezmeny_scrollpane.setVisible(false);
+		 
+		/*//Raktar
 		 raktar= new JTable();
 		 raktar_scrollpane;
 		//rendeles

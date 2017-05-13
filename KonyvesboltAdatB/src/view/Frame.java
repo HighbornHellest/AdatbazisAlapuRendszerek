@@ -45,14 +45,19 @@ public class Frame extends JFrame
 		//gomb = new Button("asdasda");
 		login = new Panel();
 		leker = new Panel();
+		
 		leker.setSize(new Dimension(1000,1000));
 		leker.setLayout(new GridBagLayout());
+		
 		feltolt = new Panel();
 		modosit = new Panel();
 		admin = new Panel();
 		MenuSor Menu = new MenuSor(this);
+		
 		leker.add(Menu.konyv_scrollpane);
 		leker.add(Menu.album_scrollpane);
+		leker.add(Menu.film_scrollpane);
+		leker.add(Menu.kedvezmeny_scrollpane);
 		this.setLayout(new BorderLayout());
 		this.setSize(1920,1080);
 		this.setResizable(false);
