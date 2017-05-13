@@ -30,7 +30,6 @@ public class MenuSor extends JMenuBar implements ActionListener
 	    String actionCommand = e.getActionCommand();
 		System.out.println(actionCommand);
 		
-		
 	/*	if (actionCommand.equals("konyv"))
 		{
 			System.out.println("Könyv");
