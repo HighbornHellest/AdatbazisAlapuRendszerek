@@ -81,7 +81,7 @@ public class VasarloDao {
 	}
 	public static void updateVasarlo(int vasarloId,Vasarlo vasarlo){
 		try {
-			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE VASARLO NEV=?,SZAMLACIM=?,SZALLITCIM=?,SZALLITCIM=?,TORZSE=?,OSSZESKOLTSEG=?,TETELSZAM=? WHERE ID=?");
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE VASARLO SET NEV=?,SZAMLACIM=?,SZALLITCIM=?,SZALLITCIM=?,TORZSE=?,OSSZESKOLTSEG=?,TETELSZAM=? WHERE ID=?");
 			try{
 				s.setString(1, vasarlo.getNev());
 				s.setString(2, vasarlo.getSzamlaCim());

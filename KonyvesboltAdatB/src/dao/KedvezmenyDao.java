@@ -73,7 +73,7 @@ public class KedvezmenyDao {
 	}
 	public static void updateKedvezmeny(int kedvezmenyId,Kedvezmeny kedvezmeny){
 		try {
-			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE KEDVEZMENY KONYVID=?,KEDVEZMENYSZAZALEK=? WHERE ID=?");
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE KEDVEZMENY SET KONYVID=?,KEDVEZMENYSZAZALEK=? WHERE ID=?");
 			try{
 				s.setInt(1, kedvezmeny.getKonyv().getId());
 				s.setInt(2, kedvezmeny.getKedvezmenySzazalek());

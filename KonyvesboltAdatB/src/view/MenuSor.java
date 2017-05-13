@@ -2,6 +2,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.List;
 import model.Label;
 import javax.swing.JMenu;
@@ -9,6 +10,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import dao.KonyvDao;
+import model.Konyv;
 /**
  * @author SZLXAGT.SZE Szûrszabó Levente  h669845
  */
@@ -71,6 +75,7 @@ public class MenuSor extends JMenuBar implements ActionListener
 		{
 			case "Konyv":
 			{
+
 				//visiblityk
 				album.setVisible(false);
 				album_scrollpane.setVisible(false);
@@ -246,34 +251,11 @@ public class MenuSor extends JMenuBar implements ActionListener
 		//vasarlo
 		 vasarlo= new JTable();
 		 vasarlo_scrollpane;*/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		gui.doLayout();
 		//konyv_scrollpane.setVisible(false);
 		//
         createMenuPoint(
-        		"Lekerdezesek","Konyv","Album" ,"Alkalmazott",
-        		"Aruhaz", "Film", "Kedvezmeny",
-        		"Raktar", "Rendeles", "Termek", "Vasarlo");
+        		"Lekerdezesek","Konyv","Almbum" ,"Alkalmazott","Aruhaz", "Film", "Kedvezmeny","Raktar", "Rendeles", "Termek", "Vasarlo");
         
      
 
