@@ -1,6 +1,7 @@
 package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.List;
 
 import javax.swing.JMenu;
@@ -8,6 +9,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import dao.KonyvDao;
+import model.Konyv;
 /**
  * @author SZLXAGT.SZE Szûrszabó Levente  h669845
  */
@@ -28,7 +32,6 @@ public class MenuSor extends JMenuBar implements ActionListener
 	public void actionPerformed(ActionEvent e) //itt vanakka a kiírások a táblázatba!
 	{
 	    String actionCommand = e.getActionCommand();
-		System.out.println(actionCommand);
 		
 	/*	if (actionCommand.equals("konyv"))
 		{
@@ -39,7 +42,20 @@ public class MenuSor extends JMenuBar implements ActionListener
 		{
 			case "Konyv":
 			{
-				System.out.println(actionCommand);
+				KonyvTableModel ktm=new KonyvTableModel();
+				JTable table=new JTable(ktm);
+				Button b=new Button("add");
+				b.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						KonyvDao.addKonyv((new Konyv(0, "Cím", 0, new Date(0), "Kiadás", "Szerző", "Társszerző", "Kiadó", 0, "Méret", "Kötés", 0, "Műfaj", "Alműfaj", false, false, 0)));
+						gui.revalidate();
+					}
+				});
+				gui.add(b);
+				gui.add(new JScrollPane(table));
+				gui.revalidate();
 				break;
 			}
 			case "Album":

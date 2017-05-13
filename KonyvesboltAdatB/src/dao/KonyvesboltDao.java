@@ -33,12 +33,14 @@ public class KonyvesboltDao {
 				Class.forName ("oracle.jdbc.OracleDriver");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
-			} 
-		    ods.setURL("jdbc:oracle:thin:@localhost:1521:kabinet");
+			}
+		    //jdbc:oracle:thin:@localhost:1521:kabinet
+		    //jdbc:oracle:thin:@orania.inf.u-szeged.hu:1521:kabinet
+		    ods.setURL("jdbc:oracle:thin:@orania.inf.u-szeged.hu:1521:kabinet");
 		    conn = ods.getConnection(username,password);
 		    Statement s=createStatement();
 		    try{
-		    	s.executeQuery("alter session set current_schema=h670182");
+		    	s.executeQuery("ALTER SESSION SET CURRENT_SCHEMA = H670182");
 		    }finally{
 		    	s.close();
 		    }

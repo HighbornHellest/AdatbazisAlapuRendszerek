@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Album;
 import model.Kedvezmeny;
 
 /**
@@ -70,4 +71,20 @@ public class KedvezmenyDao {
 		}
 		return list;
 	}
+	public static void updateKedvezmeny(int kedvezmenyId,Kedvezmeny kedvezmeny){
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE KEDVEZMENY SET KONYVID=?,KEDVEZMENYSZAZALEK=? WHERE ID=?");
+			try{
+				s.setInt(1, kedvezmeny.getKonyv().getId());
+				s.setInt(2, kedvezmeny.getKedvezmenySzazalek());
+				s.setInt(3, kedvezmenyId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

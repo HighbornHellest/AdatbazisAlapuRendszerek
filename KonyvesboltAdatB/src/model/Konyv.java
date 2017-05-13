@@ -23,11 +23,11 @@ public class Konyv extends Termek{
 	private String alMufaj;
 	private boolean ebook;
 	private boolean csakEb;
-	private int isbn13;
+	private long isbn13;
 	
 	public Konyv(int id, String cim, int oldalSzam, Date kiadIdo, String hanyadikKiadas, String szerzo,
 			String tarsSzerzo, String kiado, int vasarlasSzam, String meret, String kotes, int ar, String mufaj,
-			String alMufaj, boolean ebook, boolean csakEb, int isbn13) {
+			String alMufaj, boolean ebook, boolean csakEb, long isbn13) {
 		super(id, cim, ar, KonyvesboltDao.TERMEK_TIPUS_KONYV);
 		this.oldalSzam = oldalSzam;
 		this.kiadIdo = kiadIdo;
@@ -122,10 +122,10 @@ public class Konyv extends Termek{
 	public void setCsakEb(boolean csakEb) {
 		this.csakEb = csakEb;
 	}
-	public int getIsbn13() {
+	public long getIsbn13() {
 		return isbn13;
 	}
-	public void setIsbn13(int isbn13) {
+	public void setIsbn13(long isbn13) {
 		this.isbn13 = isbn13;
 	}
 	
