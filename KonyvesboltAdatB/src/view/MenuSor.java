@@ -1,9 +1,10 @@
 package view;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
-
+import model.Label;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -28,6 +29,37 @@ public class MenuSor extends JMenuBar implements ActionListener
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	private Frame gui;
+	
+	//konyv
+	JTable konyv;
+	JScrollPane konyv_scrollpane;
+	//almub
+	JTable album;
+	JScrollPane album_scrollpane;
+	//alkalmazott
+	JTable alkalmazott;
+	JScrollPane alkalmazott_scrollpane;
+	//film
+	JTable film;
+	JScrollPane film_scrollpane;
+	//kedvezmeny
+	JTable kedvezmeny;
+	JScrollPane kedvezmeny_scrollpane;
+	//Raktar
+	JTable raktar;
+	JScrollPane raktar_scrollpane;
+	//rendeles
+	JTable rendeles;
+	JScrollPane rendeles_scrollpane;
+	//Termek
+	JTable termek;
+	JScrollPane termek_scrollpane;
+	//vasarlo
+	JTable vasarlo;
+	JScrollPane vasarlo_scrollpane;
+	
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) //itt vanakka a kiírások a táblázatba!
 	{
@@ -42,25 +74,44 @@ public class MenuSor extends JMenuBar implements ActionListener
 		{
 			case "Konyv":
 			{
-				KonyvTableModel ktm=new KonyvTableModel();
-				JTable table=new JTable(ktm);
-				Button b=new Button("add");
-				b.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						KonyvDao.addKonyv((new Konyv(0, "Cím", 0, new Date(0), "Kiadás", "Szerző", "Társszerző", "Kiadó", 0, "Méret", "Kötés", 0, "Műfaj", "Alműfaj", false, false, 0)));
-						gui.revalidate();
-					}
-				});
-				gui.add(b);
-				gui.add(new JScrollPane(table));
-				gui.revalidate();
+
+				//visiblityk
+				album.setVisible(false);
+				album_scrollpane.setVisible(false);
+				film.setVisible(false);
+				film_scrollpane.setVisible(false);
+				kedvezmeny.setVisible(false);
+				kedvezmeny_scrollpane.setVisible(false);
+				
+				konyv.setVisible(true);
+				konyv_scrollpane.setVisible(true);
+				
+				
+				System.out.println(actionCommand);
+				
+				album_scrollpane.repaint(); album.repaint();
+				;gui.revalidate();
 				break;
 			}
 			case "Album":
 			{
+				//visiblityk
+				konyv.setVisible(false);
+				konyv_scrollpane.setVisible(false);
+				film.setVisible(false);
+				film_scrollpane.setVisible(false);
+				kedvezmeny.setVisible(false);
+				kedvezmeny_scrollpane.setVisible(false);
+
+				album.setVisible(true);
+				album_scrollpane.setVisible(true);
+				
+				
+				
 				System.out.println(actionCommand);
+				
+				album_scrollpane.repaint(); album.repaint();
+				;gui.revalidate();
 				break;
 			}
 			case "Alkalmazott":
@@ -75,11 +126,41 @@ public class MenuSor extends JMenuBar implements ActionListener
 			}
 			case "Film":
 			{
+				
+				//visiblityk
+				konyv.setVisible(false);
+				konyv_scrollpane.setVisible(false);
+				album.setVisible(false);
+				album_scrollpane.setVisible(false);
+				kedvezmeny.setVisible(false);
+				kedvezmeny_scrollpane.setVisible(false);
+				
+				film.setVisible(true);
+				film_scrollpane.setVisible(true);
+				
+				
+				gui.revalidate();
 				System.out.println(actionCommand);
 				break;
 			}
 			case "Kedvezmeny":
 			{
+				
+				//visiblityk
+				konyv.setVisible(false);
+				konyv_scrollpane.setVisible(false);
+				album.setVisible(false);
+				album_scrollpane.setVisible(false);
+				film.setVisible(false);
+				film_scrollpane.setVisible(false);
+				
+				kedvezmeny.setVisible(true);
+				kedvezmeny_scrollpane.setVisible(true);
+				
+				
+				
+				
+				gui.revalidate();
 				System.out.println(actionCommand);
 				break;
 			}
@@ -135,20 +216,47 @@ public class MenuSor extends JMenuBar implements ActionListener
 	{
 		super();
 		this.gui = gui;
-        /*createMenuPoint(Labels.konyv, "list_books");
-        createMenuPoint("placeholder for Almbum","placeholder" );
-        createMenuPoint("placeholder for Alkalmazott","placeholder" );
-        createMenuPoint("placeholder  for Aruhaz","placeholder" );
-        createMenuPoint("placeholder for Film","placeholder" );
-        createMenuPoint("placeholder for Kedvezmeny","placeholder" );
-        createMenuPoint("placeholder for Raktar","placeholder" );
-        createMenuPoint("placeholder for Rendeles","placeholder" );
-        createMenuPoint("placeholder for Termek","placeholder" );
-        createMenuPoint("placeholder for Vasarlo","placeholder" );*/
+		model.Label LABEL = new Label();
+		//konyv
+		konyv=new JTable(new KonyvTableModel());
+		konyv_scrollpane = new JScrollPane(konyv);
+		konyv_scrollpane.setVisible(false);
+		
+		//almub
+		 album = new JTable(new AlbumTableModel() );
+		 album_scrollpane = new JScrollPane(album);
+		 album_scrollpane.setVisible(false);
+		/*//alkalmazott
+		 alkalmazott= new JTable();
+		 alkalmazott_scrollpane;*/
+		//film
+		 film= new JTable(new FilmTableModel());
+		 film_scrollpane = new JScrollPane(film);
+		 film_scrollpane.setVisible(false);
+		//kedvezmeny
+		 kedvezmeny = new JTable(new KedvezmenyTableModel());
+		 kedvezmeny_scrollpane = new JScrollPane(kedvezmeny);
+		 kedvezmeny_scrollpane.setVisible(false);
+		 
+		/*//Raktar
+		 raktar= new JTable();
+		 raktar_scrollpane;
+		//rendeles
+		 rendeles= new JTable();
+		 rendeles_scrollpane;
+		//Termek
+		 termek= new JTable();
+		 termek_scrollpane;
+		//vasarlo
+		 vasarlo= new JTable();
+		 vasarlo_scrollpane;*/
+		gui.doLayout();
+		//konyv_scrollpane.setVisible(false);
+		//
         createMenuPoint(
-        		"Lekerdezesek","Konyv","Almbum" ,"Alkalmazott",
-        		"Aruhaz", "Film", "Kedvezmeny",
-        		"Raktar", "Rendeles", "Termek", "Vasarlo");
+        		"Lekerdezesek","Konyv","Almbum" ,"Alkalmazott","Aruhaz", "Film", "Kedvezmeny","Raktar", "Rendeles", "Termek", "Vasarlo");
+        
+     
 
         
 	}

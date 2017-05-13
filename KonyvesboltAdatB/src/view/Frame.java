@@ -45,13 +45,21 @@ public class Frame extends JFrame
 		//gomb = new Button("asdasda");
 		login = new Panel();
 		leker = new Panel();
+		
+		leker.setSize(new Dimension(1000,1000));
+		leker.setLayout(new GridBagLayout());
+		
 		feltolt = new Panel();
 		modosit = new Panel();
 		admin = new Panel();
 		MenuSor Menu = new MenuSor(this);
 		
-		this.setLayout(new FlowLayout());
-		this.setSize(1280,720);
+		leker.add(Menu.konyv_scrollpane);
+		leker.add(Menu.album_scrollpane);
+		leker.add(Menu.film_scrollpane);
+		leker.add(Menu.kedvezmeny_scrollpane);
+		this.setLayout(new BorderLayout());
+		this.setSize(1920,1080);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -64,7 +72,19 @@ public class Frame extends JFrame
 		
 		//this.add(gomb);
 		//itt van hozz�adva a fels� sor
-		this.add(Menu);
+		//this.add(Menu, BorderLayout.NORTH);
+		this.add(Menu, BorderLayout.NORTH);
+		this.add(leker, BorderLayout.CENTER);
+		leker.setVisible(true);
+		
+		/*this.add(Menu.album_scrollpane);
+		this.add(Menu.konyv_scrollpane);*/
+		
+		//Menu.konyv.setVisible(false);
+		
+		
+		
+		
 	}
 
 

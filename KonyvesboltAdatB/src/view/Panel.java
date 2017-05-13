@@ -4,6 +4,7 @@ package view;
  */
 
 import java.awt.*;
+import view.MenuSor;
 import java.awt.GraphicsConfiguration;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

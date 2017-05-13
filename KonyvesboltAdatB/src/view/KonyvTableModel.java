@@ -31,6 +31,26 @@ public class KonyvTableModel extends AbstractTableModel {
 	}
 
 	@Override
+	public String getColumnName(int column)
+	{
+		// TODO Auto-generated method stub
+		//return super.getColumnName(column);
+		switch(column)
+		{
+			case 0:
+			{
+				return "id";
+			
+			}
+			//todo minden név
+		
+		}
+		
+		
+		return super.getColumnName(column);
+	}
+
+	@Override
 	public int getRowCount() {
 		return konyvek.size();
 	}
