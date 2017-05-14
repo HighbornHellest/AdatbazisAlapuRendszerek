@@ -1,7 +1,6 @@
 package view;
 
 import java.sql.Date;
-import java.text.DateFormat;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -42,7 +41,7 @@ public class KonyvTableModel extends AbstractTableModel {
 				return "id";
 			
 			}
-			//todo minden név
+			//todo minden nï¿½v
 		
 		}
 		

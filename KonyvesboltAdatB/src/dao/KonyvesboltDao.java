@@ -36,7 +36,7 @@ public class KonyvesboltDao {
 			}
 		    //jdbc:oracle:thin:@localhost:1521:kabinet
 		    //jdbc:oracle:thin:@orania.inf.u-szeged.hu:1521:kabinet
-		    ods.setURL("jdbc:oracle:thin:@orania.inf.u-szeged.hu:1521:kabinet");
+		    ods.setURL("jdbc:oracle:thin:@localhost:1521:kabinet");
 		    conn = ods.getConnection(username,password);
 		    Statement s=createStatement();
 		    try{

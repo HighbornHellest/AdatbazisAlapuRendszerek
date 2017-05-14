@@ -1,21 +1,14 @@
 package view;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.util.List;
-import model.Label;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import dao.KonyvDao;
-import model.Konyv;
-/**
- * @author SZLXAGT.SZE Szûrszabó Levente  h669845
- */
+import model.Label;
 
 
 /**

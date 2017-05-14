@@ -3,20 +3,6 @@ import javax.swing.table.AbstractTableModel;
 
 
 
-/**
- * @author SZLXAGT.SZE Szûrszabó Levente  h669845
- */
-
-/**
- * @author Highborn_Hellest
- *
- */
-
-import java.util.List;
-import javax.swing.table.AbstractTableModel;
-
-
-
 public class TableModel extends AbstractTableModel
 {	
 	/* (non-Javadoc)

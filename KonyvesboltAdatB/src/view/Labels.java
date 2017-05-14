@@ -1,8 +1,7 @@
 package view;
-import java.sql.Date;
 
 /**
- * @author SZLXAGT.SZE Szûrszabó Levente  h669845
+ * @author SZLXAGT.SZE Szï¿½rszabï¿½ Levente  h669845
  */
 
 /**
@@ -11,7 +10,7 @@ import java.sql.Date;
  */
 
 
-public class Labels //ezek csak cimkék
+public class Labels //ezek csak cimkï¿½k
 {
 
     // General labels
@@ -66,7 +65,7 @@ public class Labels //ezek csak cimkék
     public final static String piece = "Piece";
     public final static String sci_fi = "sci-fi";
     public final static String horror = "horror";
-    public final static String drama = "Dráma";
+    public final static String drama = "Drï¿½ma";
     public final static String[] categories = new String[]
     {
         Labels.sci_fi,
@@ -99,7 +98,7 @@ public class Labels //ezek csak cimkék
     public final static String sell_book = "Sell book";
     public final static String list_sold_books = "List sold books";
     public final static String purchase_choose_book_and_customer =
-            "Válassz ki könyvet és vásárlót!";
+            "Vï¿½lassz ki kï¿½nyvet ï¿½s vï¿½sï¿½rlï¿½t!";
     public final static String purchase_failed =
-            "Nem sikerült rögzíteni a vásárlást!";
+            "Nem sikerï¿½lt rï¿½gzï¿½teni a vï¿½sï¿½rlï¿½st!";
 }

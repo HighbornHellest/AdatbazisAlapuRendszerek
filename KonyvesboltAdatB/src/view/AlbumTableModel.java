@@ -5,9 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import dao.AlbumDao;
-import dao.KonyvDao;
 import model.Album;
-import model.Konyv;
 
 public class AlbumTableModel extends AbstractTableModel
 {

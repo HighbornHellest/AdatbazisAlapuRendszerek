@@ -1,12 +1,10 @@
 package view;
 
-import java.awt.*;
-import java.awt.GraphicsConfiguration;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.*;
-import javax.swing.JLabel;
+
+import javax.swing.JButton;
 
 
 public class Button extends JButton
