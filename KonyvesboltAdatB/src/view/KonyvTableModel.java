@@ -15,7 +15,8 @@ public class KonyvTableModel extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = -6025598787341275788L;
 	private List<Konyv> konyvek = KonyvDao.getKonyvek();
-
+	private static final String[] COLUMN_NAMES={"ID","Cím","Oldalak száma","Kiadás ideje","Kiadás","Szerző","Társszerző","Kiadó",
+			"Vásárlás száma","Méret","Kötés","Ár","Műfaj","Alműfaj","Van ebook","Csak ebook","ISBN13"};
 	public KonyvTableModel() {
 		super();
 	}
@@ -36,21 +37,7 @@ public class KonyvTableModel extends AbstractTableModel {
 	@Override
 	public String getColumnName(int column)
 	{
-		// TODO Auto-generated method stub
-		//return super.getColumnName(column);
-		switch(column)
-		{
-			case 0:
-			{
-				return "id";
-			
-			}
-			//todo minden n�v
-		
-		}
-		
-		
-		return super.getColumnName(column);
+		return COLUMN_NAMES[column];
 	}
 
 	@Override

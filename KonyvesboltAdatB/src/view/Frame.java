@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
@@ -28,7 +29,7 @@ public class Frame extends JFrame
 	 */
 	private static final long serialVersionUID = -5778152951530634035L;
 	Button gomb;
-    Panel login, leker, feltolt, modosit, admin;
+    private static Panel login, leker, feltolt, modosit, admin;
 
 	public Frame()
 	{
@@ -49,19 +50,13 @@ public class Frame extends JFrame
 		//gomb = new Button("asdasda");
 		login = new Panel();
 		leker = new Panel();
-		
-		leker.setSize(new Dimension(1000,1000));
-		leker.setLayout(new GridBagLayout());
+		leker.setLayout(new GridLayout(0,1));
 		
 		feltolt = new Panel();
 		modosit = new Panel();
 		admin = new Panel();
 		MenuSor Menu = new MenuSor(this);
 		
-		leker.add(Menu.konyv_scrollpane);
-		leker.add(Menu.album_scrollpane);
-		leker.add(Menu.film_scrollpane);
-		leker.add(Menu.kedvezmeny_scrollpane);
 		this.setLayout(new BorderLayout());
 		this.setSize(1920,1080);
 		this.setResizable(false);
@@ -89,6 +84,14 @@ public class Frame extends JFrame
 		
 		
 		
+	}
+
+	public static Panel getLeker() {
+		return leker;
+	}
+
+	public static void setLeker(Panel leker) {
+		Frame.leker = leker;
 	}
 
 

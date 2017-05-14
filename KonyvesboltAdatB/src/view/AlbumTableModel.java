@@ -15,6 +15,7 @@ public class AlbumTableModel extends AbstractTableModel
 	 * 
 	 */
 	private static final long serialVersionUID = -1268103299102232362L;
+	private static final String[] COLUMN_NAMES={"ID","Cím","Előadó","Műfaj","Ár"};
 	private List<Album> Albumok = AlbumDao.getAlbumok();
 
 	public List<Album> getAlbumok() {
@@ -28,7 +29,7 @@ public class AlbumTableModel extends AbstractTableModel
 	
 	@Override
 	public int getColumnCount() {
-		return 6;
+		return 5;
 	}
 
 	@Override
@@ -39,30 +40,7 @@ public class AlbumTableModel extends AbstractTableModel
 	
 	@Override
 	public String getColumnName(int column) {
-		// TODO Auto-generated method stub
-		
-		switch(column)
-		{
-			case 0:
-			{return "ID";}
-			case 1:
-			{return "cím";}
-			case 2:
-			{return "Eloado";}
-			case 3:
-			{return "Mufaj";}
-			case 4:
-			{return "Tipus";}
-			case 5:
-			{return "Ar";}
-			
-
-			//todo minden név
-		
-		}
-		
-		
-		return super.getColumnName(column);
+		return COLUMN_NAMES[column];
 	}
 
 	@Override
@@ -89,14 +67,8 @@ public class AlbumTableModel extends AbstractTableModel
 			}
 			case 4:
 			{
-				return album.getTipus();
-			}
-			case 5:
-			{
 				return album.getAr();
-			}
-			
-			
+			}			
 			default:
 			{
 				break;

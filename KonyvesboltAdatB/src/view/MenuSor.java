@@ -67,15 +67,15 @@ public class MenuSor extends JMenuBar implements ActionListener
 			case "Konyv":
 			{
 				hideAll();
+				Frame.getLeker().add(konyv_scrollpane);
 				konyv_scrollpane.setVisible(true);
-				
-				//album_scrollpane.repaint(); album.repaint();
 				gui.revalidate();
 				break;
 			}
 			case "Album":
 			{
 				hideAll();
+				Frame.getLeker().add(album_scrollpane);
 				album_scrollpane.setVisible(true);
 				gui.revalidate();
 				break;
@@ -93,6 +93,7 @@ public class MenuSor extends JMenuBar implements ActionListener
 			case "Film":
 			{
 				hideAll();
+				Frame.getLeker().add(film_scrollpane);
 				film_scrollpane.setVisible(true);
 				gui.revalidate();
 				break;
@@ -101,6 +102,7 @@ public class MenuSor extends JMenuBar implements ActionListener
 			{
 				
 				hideAll();
+				Frame.getLeker().add(kedvezmeny_scrollpane);
 				kedvezmeny_scrollpane.setVisible(true);
 				gui.revalidate();
 				break;
@@ -157,6 +159,7 @@ public class MenuSor extends JMenuBar implements ActionListener
 		raktar_scrollpane.setVisible(false);
 		vasarlo_scrollpane.setVisible(false);
 		rendeles_scrollpane.setVisible(false);
+		Frame.getLeker().removeAll();
 		
 	}
 	public MenuSor(Frame gui)
