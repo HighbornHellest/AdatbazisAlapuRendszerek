@@ -12,7 +12,7 @@ import model.Kedvezmeny;
  * @author Tamássy Urmás
  *
  */
-public class KedvezmenyDao {
+public class KedvezmenyDao{
 	/**
 	 * Hozzáad egy kedvezményt
 	 * @param kedvezmeny
@@ -85,5 +85,17 @@ public class KedvezmenyDao {
 			e.printStackTrace();
 		}
 	}
-	
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM KEDVEZMENY WHERE ID=?");
+			try{
+				s.setInt(1, id);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

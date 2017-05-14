@@ -15,6 +15,9 @@ public class Kedvezmeny {
 		this.konyv = konyv;
 		this.kedvezmenySzazalek = kedvezmenySzazalek;
 	}
+	public Kedvezmeny() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
@@ -32,5 +35,10 @@ public class Kedvezmeny {
 	}
 	public void setKedvezmenySzazalek(int kedvezmenySzazalek) {
 		this.kedvezmenySzazalek = kedvezmenySzazalek;
+	}
+	public void setFromArray(String[] array) {
+		id=Integer.parseInt(array[0]);
+		konyv.setId(Integer.parseInt(array[1]));
+		kedvezmenySzazalek=Integer.parseInt(array[2]);
 	}
 }

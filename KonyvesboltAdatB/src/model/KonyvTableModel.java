@@ -3,11 +3,9 @@ package model;
 import java.sql.Date;
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import dao.KonyvDao;
 
-public class KonyvTableModel extends AbstractTableModel {
+public class KonyvTableModel extends ResettableTableModel {
 
 	/**
 	 * 
@@ -162,6 +160,11 @@ public class KonyvTableModel extends AbstractTableModel {
 	public void reset() {
 		konyvek = KonyvDao.getKonyvek();
 		fireTableDataChanged();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		KonyvDao.delete(id);
 	}
 
 }

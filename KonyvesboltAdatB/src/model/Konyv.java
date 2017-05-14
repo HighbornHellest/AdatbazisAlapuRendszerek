@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 import dao.KonyvesboltDao;
 

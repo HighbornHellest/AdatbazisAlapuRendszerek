@@ -12,7 +12,7 @@ import model.Film;
  * @author Tamássy Urmás
  *
  */
-public class FilmDao {
+public class FilmDao{
 	/**
 	 * Filmek hozzáadása
 	 * @param film
@@ -112,6 +112,19 @@ public class FilmDao {
 				s.setString(4, film.getRendezo());
 				s.setInt(5, film.getAr());
 				s.setInt(6, filmId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM FILM WHERE ID=?");
+			try{
+				s.setInt(1, id);
 				s.executeQuery();
 			}finally{
 				s.close();

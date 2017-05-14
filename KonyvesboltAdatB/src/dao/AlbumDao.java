@@ -12,7 +12,7 @@ import model.Album;
  * @author Tamássy Urmás
  *
  */
-public class AlbumDao {
+public class AlbumDao{
 	/**
 	 * Albumok hozzáadása
 	 * @param album
@@ -105,6 +105,19 @@ public class AlbumDao {
 				s.setString(3, album.getMufaj());
 				s.setInt(4, album.getAr());
 				s.setInt(5, albumId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM ALBUM WHERE ID=?");
+			try{
+				s.setInt(1, id);
 				s.executeQuery();
 			}finally{
 				s.close();

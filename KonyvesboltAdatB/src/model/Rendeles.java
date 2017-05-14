@@ -17,6 +17,8 @@ public class Rendeles {
 		this.vasarlo = vasarlo;
 		this.rendelesId = rendelesId;
 	}
+	public Rendeles() {
+	}
 	public int getId() {
 		return id;
 	}
@@ -40,5 +42,22 @@ public class Rendeles {
 	}
 	public void setRendelesId(int rendelesId) {
 		this.rendelesId = rendelesId;
+	}
+	public String[] toArray() {
+		String[] array = new String[5];
+		array[0] = Integer.toString(getId());
+		array[1] = Integer.toString(termek.getId());
+		array[2] = termek.getTipus();
+		array[3] = Integer.toString(vasarlo.getId());
+		array[4] = Integer.toString(rendelesId);
+		return array;
+	}
+
+	public void setFromArray(String[] array) {
+		setId(Integer.parseInt(array[0]));
+		termek.setId(Integer.parseInt(array[1]));
+		termek.setTipus(array[2]);
+		vasarlo.setId(Integer.parseInt(array[3]));
+		rendelesId=Integer.parseInt(array[4]);
 	}
 }

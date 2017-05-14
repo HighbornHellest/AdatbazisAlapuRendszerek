@@ -2,18 +2,16 @@ package model;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import dao.AlbumDao;
 
-public class AlbumTableModel extends AbstractTableModel
+public class AlbumTableModel extends ResettableTableModel
 {
 	
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1268103299102232362L;
+	private static final long serialVersionUID = -7173144406878382961L;
 	public static final String[] COLUMN_NAMES={"ID","Cím","Előadó","Műfaj","Ár"};
 	private List<Album> albumok = AlbumDao.getAlbumok();
 
@@ -39,6 +37,7 @@ public class AlbumTableModel extends AbstractTableModel
 	
 	@Override
 	public String getColumnName(int column) {
+		if(column==COLUMN_NAMES.length) return "Törlés";
 		return COLUMN_NAMES[column];
 	}
 
@@ -67,7 +66,7 @@ public class AlbumTableModel extends AbstractTableModel
 			case 4:
 			{
 				return album.getAr();
-			}			
+			}
 			default:
 			{
 				break;
@@ -104,6 +103,12 @@ public class AlbumTableModel extends AbstractTableModel
 	public void reset() {
 		albumok=AlbumDao.getAlbumok();
 		fireTableDataChanged();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		AlbumDao.delete(id);
+		
 	}
 
 }

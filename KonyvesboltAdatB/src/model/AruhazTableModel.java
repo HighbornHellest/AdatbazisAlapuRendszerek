@@ -2,11 +2,9 @@ package model;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import dao.AruhazDao;
 
-public class AruhazTableModel extends AbstractTableModel{
+public class AruhazTableModel extends ResettableTableModel{
 
 	/**
 	 * 
@@ -84,5 +82,11 @@ public class AruhazTableModel extends AbstractTableModel{
 	public void reset() {
 		aruhazak=AruhazDao.getAruhazak();
 		fireTableDataChanged();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		AruhazDao.delete(id);
+		
 	}
 }

@@ -27,6 +27,8 @@ public class Vasarlo {
 		this.osszesKoltseg = osszesKoltseg;
 		this.tetelSzam = tetelSzam;
 	}
+	public Vasarlo() {
+	}
 	public int getId() {
 		return id;
 	}
@@ -75,6 +77,29 @@ public class Vasarlo {
 	public void setTetelSzam(int tetelSzam) {
 		this.tetelSzam = tetelSzam;
 	}
-	
+	public String[] toArray() {
+		String[] array = new String[8];
+		array[0] = Integer.toString(getId());
+		array[1] = nev;
+		array[2] = szamlaCim;
+		array[3] = szallitCim;
+		array[4] = szallitCim2;
+		array[5] = Boolean.toString(torzsE);
+		array[6] = Integer.toString(osszesKoltseg);
+		array[7] = Integer.toString(tetelSzam);
+		
+		return array;
+	}
+
+	public void setFromArray(String[] array) {
+		setId(Integer.parseInt(array[0]));
+		nev=array[1];
+		szamlaCim=array[2];
+		szallitCim=array[3];
+		szallitCim2=array[4];
+		torzsE=Boolean.parseBoolean(array[5]);
+		osszesKoltseg=Integer.parseInt(array[6]);
+		tetelSzam=Integer.parseInt(array[7]);
+	}
 	
 }

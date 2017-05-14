@@ -18,7 +18,11 @@ import dao.AlbumDao;
 import dao.AlkalmazottDao;
 import dao.AruhazDao;
 import dao.FilmDao;
+import dao.KedvezmenyDao;
 import dao.KonyvDao;
+import dao.RaktarDao;
+import dao.RendelesDao;
+import dao.VasarloDao;
 import model.Album;
 import model.AlbumTableModel;
 import model.Alkalmazott;
@@ -27,9 +31,17 @@ import model.Aruhaz;
 import model.AruhazTableModel;
 import model.Film;
 import model.FilmTableModel;
+import model.Kedvezmeny;
 import model.KedvezmenyTableModel;
 import model.Konyv;
 import model.KonyvTableModel;
+import model.Raktar;
+import model.RaktarTableModel;
+import model.Rendeles;
+import model.RendelesTableModel;
+import model.ResettableTableModel;
+import model.Vasarlo;
+import model.VasarloTableModel;
 
 /**
  * @author Highborn_Hellest
@@ -49,6 +61,7 @@ public class MenuSor extends JMenuBar implements ActionListener {
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	private Frame gui;
+	private JTable selectedTable;
 
 	// konyv
 	JTable konyv;
@@ -79,9 +92,12 @@ public class MenuSor extends JMenuBar implements ActionListener {
 	private JPanel gombPanel;
 
 	private JButton add;
+	private JButton delete;
+	
 
 	private JScrollPane aruhaz_scrollpane;
 	private JTable aruhaz;
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) // itt vanakka a kiírások a
@@ -97,6 +113,7 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		hideAll();
 		switch (actionCommand) {
 		case "Konyv": {
+			selectedTable=konyv;
 			currentPane = konyv_scrollpane;
 			add.addActionListener(new ActionListener() {
 
@@ -110,10 +127,12 @@ public class MenuSor extends JMenuBar implements ActionListener {
 					gui.revalidate();
 				}
 			});
+			
 			break;
 		}
 		case "Album": {
 			currentPane = album_scrollpane;
+			selectedTable=album;
 			add.addActionListener(new ActionListener() {
 
 				@Override
@@ -130,6 +149,7 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		}
 		case "Alkalmazott": {
 			currentPane = alkalmazott_scrollpane;
+			selectedTable=alkalmazott;
 			add.addActionListener(new ActionListener() {
 
 				@Override
@@ -146,6 +166,7 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		}
 		case "Aruhaz": {
 			currentPane = aruhaz_scrollpane;
+			selectedTable=aruhaz;
 			add.addActionListener(new ActionListener() {
 
 				@Override
@@ -162,6 +183,7 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		}
 		case "Film": {
 			currentPane = film_scrollpane;
+			selectedTable=film;
 			add.addActionListener(new ActionListener() {
 
 				@Override
@@ -178,18 +200,70 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		}
 		case "Kedvezmeny": {
 			currentPane = kedvezmeny_scrollpane;
+			selectedTable=kedvezmeny;
+			add.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Kedvezmeny k=new Kedvezmeny();
+					InputWindow iw = new InputWindow(KedvezmenyTableModel.COLUMN_NAMES);
+					k.setFromArray(iw.showForm());
+					KedvezmenyDao.addKedvezmeny(k);
+					((ResettableTableModel) selectedTable.getModel()).reset();
+					gui.revalidate();
+				}
+			});
 			break;
 		}
 		case "Raktar": {
+			currentPane = raktar_scrollpane;
+			selectedTable=raktar;
+			add.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Raktar r=new Raktar();
+					InputWindow iw = new InputWindow(RaktarTableModel.COLUMN_NAMES);
+					r.setFromArray(iw.showForm());
+					RaktarDao.addRaktar(r);
+					((ResettableTableModel) selectedTable.getModel()).reset();
+					gui.revalidate();
+				}
+			});
 			break;
 		}
 		case "Rendeles": {
-			break;
-		}
-		case "Termek": {
+			currentPane = rendeles_scrollpane;
+			selectedTable=rendeles;
+			add.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Rendeles r=new Rendeles();
+					InputWindow iw = new InputWindow(RaktarTableModel.COLUMN_NAMES);
+					r.setFromArray(iw.showForm());
+					RendelesDao.addRendeles(r);
+					((ResettableTableModel) selectedTable.getModel()).reset();
+					gui.revalidate();
+				}
+			});
 			break;
 		}
 		case "Vasarlo": {
+			currentPane = vasarlo_scrollpane;
+			selectedTable=vasarlo;
+			add.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Vasarlo v=new Vasarlo();
+					InputWindow iw = new InputWindow(RaktarTableModel.COLUMN_NAMES);
+					v.setFromArray(iw.showForm());
+					VasarloDao.addVasarlo(v);
+					((ResettableTableModel) selectedTable.getModel()).reset();
+					gui.revalidate();
+				}
+			});
 			break;
 		}
 		default: {
@@ -264,27 +338,41 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		kedvezmeny_scrollpane.setVisible(true);
 		kedvezmeny.setAutoCreateRowSorter(true);
 		// Raktar
-		raktar = new JTable();
+		raktar = new JTable(new RaktarTableModel());
 		raktar_scrollpane = new JScrollPane(raktar);
 		raktar.setAutoCreateRowSorter(true);
 		// rendeles
-		rendeles = new JTable();
+		rendeles = new JTable(new RendelesTableModel());
 		rendeles_scrollpane = new JScrollPane(rendeles);
 		rendeles.setAutoCreateRowSorter(true);
 		// vasarlo
-		vasarlo = new JTable();
+		vasarlo = new JTable(new VasarloTableModel());
 		vasarlo_scrollpane = new JScrollPane(vasarlo);
 		vasarlo.setAutoCreateRowSorter(true);
 
 		gombPanel = new JPanel();
 		gombPanel.setLayout(new FlowLayout());
 		add = new JButton("add");
+		delete=new JButton("delete selected");
 		gombPanel.add(add);
+		gombPanel.add(delete);
+		delete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int row=selectedTable.getSelectedRow();
+				if(row>-1){
+					Integer id=(Integer) selectedTable.getValueAt(row, 0);
+					((ResettableTableModel)selectedTable.getModel()).delete(id);
+					((ResettableTableModel)selectedTable.getModel()).reset();
+				}
+			}
+		});
 		gombPanel.setVisible(false);
 		Frame.getLeker().add(gombPanel, BorderLayout.SOUTH);
 		gui.doLayout();
 		createMenuPoint("Lekerdezesek", "Konyv", "Album", "Alkalmazott", "Aruhaz", "Film", "Kedvezmeny", "Raktar",
-				"Rendeles", "Termek", "Vasarlo");
+				"Rendeles", "Vasarlo");
 
 	}
 

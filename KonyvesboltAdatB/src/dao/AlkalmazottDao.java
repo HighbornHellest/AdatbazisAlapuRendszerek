@@ -13,7 +13,7 @@ import model.Aruhaz;
  * @author Tamássy Urmás
  *
  */
-public class AlkalmazottDao {
+public class AlkalmazottDao{
 	/**
 	 * Hozzáad egy alkalmazottat
 	 * 
@@ -101,6 +101,19 @@ public class AlkalmazottDao {
 				s.setInt(8, alkalmazottId);
 				s.executeQuery();
 			} finally {
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM ALKALMAZOTT WHERE ID=?");
+			try{
+				s.setInt(1, id);
+				s.executeQuery();
+			}finally{
 				s.close();
 			}
 		} catch (SQLException e) {

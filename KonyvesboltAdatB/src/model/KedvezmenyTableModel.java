@@ -2,16 +2,15 @@ package model;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import dao.KedvezmenyDao;;
 
-public class KedvezmenyTableModel extends AbstractTableModel {
+public class KedvezmenyTableModel extends ResettableTableModel{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -421366981554883577L;
 	private List<Kedvezmeny> kedvezmenyek = KedvezmenyDao.getKedvezmenyek();
+	public static final String[] COLUMN_NAMES={"ID","Könyv ID","Százalék"};
 
 	public List<Kedvezmeny> getKedvezmenyek() {
 		return kedvezmenyek;
@@ -38,7 +37,7 @@ public class KedvezmenyTableModel extends AbstractTableModel {
 		case 0:
 			return kedvezmeny.getId();
 		case 1:
-			return kedvezmeny.getKonyv();
+			return kedvezmeny.getKonyv().getId();
 		case 2:
 			return kedvezmeny.getKedvezmenySzazalek();
 		default:
@@ -69,5 +68,27 @@ public class KedvezmenyTableModel extends AbstractTableModel {
 		}
 		KedvezmenyDao.updateKedvezmeny(kedvezmenyek.get(rowIndex).getId(),kedvezmenyek.get(rowIndex));
 	}
+
+	@Override
+	public void reset() {
+		kedvezmenyek=KedvezmenyDao.getKedvezmenyek();
+		fireTableDataChanged();
+	}
+
+	@Override
+	public String getColumnName(int column) {
+		return COLUMN_NAMES[column];
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		return getValueAt(0, columnIndex).getClass();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		KedvezmenyDao.delete(id);
+	}
+	
 
 }

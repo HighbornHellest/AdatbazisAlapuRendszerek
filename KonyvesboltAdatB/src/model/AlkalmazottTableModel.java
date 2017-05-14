@@ -2,15 +2,15 @@ package model;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
 import dao.AlkalmazottDao;
 
-public class AlkalmazottTableModel extends AbstractTableModel{
+public class AlkalmazottTableModel extends ResettableTableModel{
+
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1268103299102232362L;
+	private static final long serialVersionUID = 7888481695831595669L;
 	public static final String[] COLUMN_NAMES={"ID","Név","Szülidő","Fizetés","Beosztás", "Munkaviszony", "Cím","ÁruházId"};
 	private List<Alkalmazott> alkalmazottak = AlkalmazottDao.getAlkalmazottak();
 	
@@ -87,24 +87,24 @@ public class AlkalmazottTableModel extends AbstractTableModel{
 	}
 
 	@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		return getValueAt(0, columnIndex).getClass();
-	}
-
-	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Alkalmazott alkalmazott=alkalmazottak.get(rowIndex);
 		String[] array=alkalmazott.toArray();
 		array[columnIndex]=aValue.toString();
 		alkalmazott.setFromArray(array);
 		AlkalmazottDao.updateAlkalmazott(alkalmazott.getId(), alkalmazott);
-		//albumok.set(rowIndex, album);
 		reset();
 	}
 
 	public void reset() {
 		alkalmazottak=AlkalmazottDao.getAlkalmazottak();
 		fireTableDataChanged();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		AlkalmazottDao.delete(id);
+		
 	}
 
 }

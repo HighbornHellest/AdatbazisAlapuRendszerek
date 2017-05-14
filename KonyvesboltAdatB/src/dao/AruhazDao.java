@@ -12,7 +12,7 @@ import model.Aruhaz;
  * @author Tamássy Urmás
  *
  */
-public class AruhazDao {
+public class AruhazDao{
 	/**
 	 * Hozzáad egy áruházat
 	 * @param aruhaz
@@ -80,6 +80,19 @@ public class AruhazDao {
 				s.setInt(2, aruhaz.getDolgozoSzam());
 				s.setString(3, aruhaz.getNyitvatart());
 				s.setInt(4, aruhazId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM ARUHAZ WHERE ID=?");
+			try{
+				s.setInt(1, id);
 				s.executeQuery();
 			}finally{
 				s.close();

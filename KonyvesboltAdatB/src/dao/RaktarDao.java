@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import model.Aruhaz;
 import model.Raktar;
@@ -17,7 +18,7 @@ import model.Termek;
  * @author Tamássy Urmás
  *
  */
-public class RaktarDao {
+public class RaktarDao{
 	/**
 	 * Id alapján módosít egy sort.
 	 * @param raktarId
@@ -178,5 +179,18 @@ public class RaktarDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM RAKTAR WHERE ID=?");
+			try{
+				s.setInt(1, id);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

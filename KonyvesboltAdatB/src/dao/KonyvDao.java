@@ -12,7 +12,7 @@ import model.Konyv;
  * @author Tamássy Urmás
  *
  */
-public class KonyvDao {
+public class KonyvDao{
 	/**
 	 * Könyvek hozzáadása
 	 * @param konyv
@@ -340,5 +340,18 @@ public class KonyvDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM KONYV WHERE ID=?");
+			try{
+				s.setInt(1, id);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

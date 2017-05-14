@@ -13,7 +13,7 @@ import model.Vasarlo;
  * @author Tamássy Urmás
  *
  */
-public class RendelesDao {
+public class RendelesDao{
 	/**
 	 * Hozzáad több rendelést és visszatér a rendelés(!!!) id-jével
 	 * @param rendelesek
@@ -104,5 +104,18 @@ public class RendelesDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM RENDELES WHERE ID=?");
+			try{
+				s.setInt(1, id);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

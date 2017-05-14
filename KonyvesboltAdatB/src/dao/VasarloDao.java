@@ -12,7 +12,7 @@ import model.Vasarlo;
  * @author Tamássy Urmás
  *
  */
-public class VasarloDao {
+public class VasarloDao{
 	/**
 	 * Hozzáad egy vásárlót
 	 * @param vasarlo
@@ -78,7 +78,7 @@ public class VasarloDao {
 		}
 		return list;
 	}
-	public static void updateVasarlo(int vasarloId,Vasarlo vasarlo){
+	public static void update(int vasarloId,Vasarlo vasarlo){
 		try {
 			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE VASARLO SET NEV=?,SZAMLACIM=?,SZALLITCIM=?,SZALLITCIM=?,TORZSE=?,OSSZESKOLTSEG=?,TETELSZAM=? WHERE ID=?");
 			try{
@@ -90,6 +90,19 @@ public class VasarloDao {
 				s.setInt(6, vasarlo.getOsszesKoltseg());
 				s.setInt(7, vasarlo.getTetelSzam());
 				s.setInt(8, vasarloId);
+				s.executeQuery();
+			}finally{
+				s.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void delete(int id) {
+		try {
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("DELETE FROM VASARLO WHERE ID=?");
+			try{
+				s.setInt(1, id);
 				s.executeQuery();
 			}finally{
 				s.close();

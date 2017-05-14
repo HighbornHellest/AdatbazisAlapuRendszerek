@@ -2,11 +2,9 @@ package model;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import dao.FilmDao;
 
-public class FilmTableModel extends AbstractTableModel{
+public class FilmTableModel extends ResettableTableModel{
 	
 	/**
 	 * 
@@ -98,5 +96,10 @@ public class FilmTableModel extends AbstractTableModel{
 	public void reset(){
 		filmek=FilmDao.getFilmek();
 		fireTableDataChanged();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		FilmDao.delete(id);
 	}
 }
