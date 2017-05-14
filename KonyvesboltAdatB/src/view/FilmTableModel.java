@@ -9,6 +9,10 @@ import model.Film;
 
 public class FilmTableModel extends AbstractTableModel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5503452980432821789L;
 	private List<Film> filmek = FilmDao.getFilmek();
 
 	public List<Film> getFilmek() {

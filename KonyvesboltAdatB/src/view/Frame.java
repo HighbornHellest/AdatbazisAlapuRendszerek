@@ -23,7 +23,11 @@ public class Frame extends JFrame
     int height = 1;
     GridLayout gridLay = new GridLayout(width, height);*/
 	
-    Button gomb;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5778152951530634035L;
+	Button gomb;
     Panel login, leker, feltolt, modosit, admin;
 
 	public Frame()

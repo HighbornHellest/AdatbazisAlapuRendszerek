@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 
 public class Label extends JLabel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3953341392855886653L;
 	MouseListener m1;
 	MouseAdapter lis;
 	

@@ -8,15 +8,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import model.Label;
-
-
 /**
  * @author Highborn_Hellest
  *
  */
 public class MenuSor extends JMenuBar implements ActionListener
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5218194030558631971L;
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -44,9 +46,6 @@ public class MenuSor extends JMenuBar implements ActionListener
 	//rendeles
 	JTable rendeles;
 	JScrollPane rendeles_scrollpane;
-	//Termek
-	JTable termek;
-	JScrollPane termek_scrollpane;
 	//vasarlo
 	JTable vasarlo;
 	JScrollPane vasarlo_scrollpane;
@@ -67,119 +66,64 @@ public class MenuSor extends JMenuBar implements ActionListener
 		{
 			case "Konyv":
 			{
-
-				//visiblityk
-				album.setVisible(false);
-				album_scrollpane.setVisible(false);
-				film.setVisible(false);
-				film_scrollpane.setVisible(false);
-				kedvezmeny.setVisible(false);
-				kedvezmeny_scrollpane.setVisible(false);
-				
-				konyv.setVisible(true);
+				hideAll();
 				konyv_scrollpane.setVisible(true);
 				
-				
-				System.out.println(actionCommand);
-				
-				album_scrollpane.repaint(); album.repaint();
-				;gui.revalidate();
+				//album_scrollpane.repaint(); album.repaint();
+				gui.revalidate();
 				break;
 			}
 			case "Album":
 			{
-				//visiblityk
-				konyv.setVisible(false);
-				konyv_scrollpane.setVisible(false);
-				film.setVisible(false);
-				film_scrollpane.setVisible(false);
-				kedvezmeny.setVisible(false);
-				kedvezmeny_scrollpane.setVisible(false);
-
-				album.setVisible(true);
+				hideAll();
 				album_scrollpane.setVisible(true);
-				
-				
-				
-				System.out.println(actionCommand);
-				
-				album_scrollpane.repaint(); album.repaint();
-				;gui.revalidate();
+				gui.revalidate();
 				break;
 			}
 			case "Alkalmazott":
 			{
-				System.out.println(actionCommand);
+				hideAll();
 				break;
 			}
 			case "Aruhaz":
 			{
-				System.out.println(actionCommand);
+				hideAll();
 				break;
 			}
 			case "Film":
 			{
-				
-				//visiblityk
-				konyv.setVisible(false);
-				konyv_scrollpane.setVisible(false);
-				album.setVisible(false);
-				album_scrollpane.setVisible(false);
-				kedvezmeny.setVisible(false);
-				kedvezmeny_scrollpane.setVisible(false);
-				
-				film.setVisible(true);
+				hideAll();
 				film_scrollpane.setVisible(true);
-				
-				
 				gui.revalidate();
-				System.out.println(actionCommand);
 				break;
 			}
 			case "Kedvezmeny":
 			{
 				
-				//visiblityk
-				konyv.setVisible(false);
-				konyv_scrollpane.setVisible(false);
-				album.setVisible(false);
-				album_scrollpane.setVisible(false);
-				film.setVisible(false);
-				film_scrollpane.setVisible(false);
-				
-				kedvezmeny.setVisible(true);
+				hideAll();
 				kedvezmeny_scrollpane.setVisible(true);
-				
-				
-				
-				
 				gui.revalidate();
-				System.out.println(actionCommand);
 				break;
 			}
 			case "Raktar":
 			{
-				System.out.println(actionCommand);
 				break;
 			}
 			case "Rendeles":
 			{
-				System.out.println(actionCommand);
 				break;
 			}
 			case "Termek":
 			{
-				System.out.println(actionCommand);
 				break;
 			}
 			case "Vasarlo":
 			{
-				System.out.println(actionCommand);
 				break;
 			}
 			default:
 			{
-				System.out.println("Valami el van baszva mert ez nem futhat le");
+				System.out.println("Nem káromkodunk kódban, de igazad van, valami tönkrement.");
 				break;
 			}
 		
@@ -204,12 +148,22 @@ public class MenuSor extends JMenuBar implements ActionListener
 		
 		
 	}
-	
+	public void hideAll(){
+		konyv_scrollpane.setVisible(false);
+		album_scrollpane.setVisible(false);
+		kedvezmeny_scrollpane.setVisible(false);
+		film_scrollpane.setVisible(false);
+		alkalmazott_scrollpane.setVisible(false);
+		raktar_scrollpane.setVisible(false);
+		vasarlo_scrollpane.setVisible(false);
+		rendeles_scrollpane.setVisible(false);
+		
+	}
 	public MenuSor(Frame gui)
 	{
 		super();
 		this.gui = gui;
-		model.Label LABEL = new Label();
+		//model.Label LABEL = new Label();
 		//konyv
 		konyv=new JTable(new KonyvTableModel());
 		konyv_scrollpane = new JScrollPane(konyv);
@@ -219,9 +173,9 @@ public class MenuSor extends JMenuBar implements ActionListener
 		 album = new JTable(new AlbumTableModel() );
 		 album_scrollpane = new JScrollPane(album);
 		 album_scrollpane.setVisible(false);
-		/*//alkalmazott
+		//alkalmazott
 		 alkalmazott= new JTable();
-		 alkalmazott_scrollpane;*/
+		 alkalmazott_scrollpane= new JScrollPane(alkalmazott);
 		//film
 		 film= new JTable(new FilmTableModel());
 		 film_scrollpane = new JScrollPane(film);
@@ -231,23 +185,18 @@ public class MenuSor extends JMenuBar implements ActionListener
 		 kedvezmeny_scrollpane = new JScrollPane(kedvezmeny);
 		 kedvezmeny_scrollpane.setVisible(false);
 		 
-		/*//Raktar
+		//Raktar
 		 raktar= new JTable();
-		 raktar_scrollpane;
+		 raktar_scrollpane= new JScrollPane(raktar);
 		//rendeles
 		 rendeles= new JTable();
-		 rendeles_scrollpane;
-		//Termek
-		 termek= new JTable();
-		 termek_scrollpane;
+		 rendeles_scrollpane= new JScrollPane(rendeles);
 		//vasarlo
 		 vasarlo= new JTable();
-		 vasarlo_scrollpane;*/
+		 vasarlo_scrollpane=new JScrollPane(vasarlo);
 		gui.doLayout();
-		//konyv_scrollpane.setVisible(false);
-		//
         createMenuPoint(
-        		"Lekerdezesek","Konyv","Almbum" ,"Alkalmazott","Aruhaz", "Film", "Kedvezmeny","Raktar", "Rendeles", "Termek", "Vasarlo");
+        		"Lekerdezesek","Konyv","Album" ,"Alkalmazott","Aruhaz", "Film", "Kedvezmeny","Raktar", "Rendeles", "Termek", "Vasarlo");
         
      
 

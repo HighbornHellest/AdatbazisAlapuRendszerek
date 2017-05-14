@@ -11,6 +11,10 @@ public class AlbumTableModel extends AbstractTableModel
 {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1268103299102232362L;
 	private List<Album> Albumok = AlbumDao.getAlbumok();
 
 	public List<Album> getAlbumok() {

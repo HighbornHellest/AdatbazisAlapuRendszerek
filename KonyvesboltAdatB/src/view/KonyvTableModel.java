@@ -10,6 +10,10 @@ import model.Konyv;
 
 public class KonyvTableModel extends AbstractTableModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6025598787341275788L;
 	private List<Konyv> konyvek = KonyvDao.getKonyvek();
 
 	public KonyvTableModel() {
@@ -102,6 +106,7 @@ public class KonyvTableModel extends AbstractTableModel {
 		return !(columnIndex==0||columnIndex==3);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		String value=(String) aValue;

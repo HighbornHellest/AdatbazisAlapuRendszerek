@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 
 public class Panel extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5272622967263720666L;
 	MouseListener m1;
 	MouseAdapter lis;
 	

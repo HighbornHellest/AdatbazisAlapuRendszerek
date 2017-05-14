@@ -11,7 +11,12 @@ public class TableModel extends AbstractTableModel
 	
 	
 	
-    private String[] columnNames = new String[]
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6641426312983095830L;
+	@SuppressWarnings("unused")
+	private String[] columnNames = new String[]
     {
             Labels.oldalSzam , Labels.kiadIdo, Labels.hanyadikKiadas, Labels.szerzo,
             Labels.tarsSzerzo, Labels.kiado, "vasarlasSzam",

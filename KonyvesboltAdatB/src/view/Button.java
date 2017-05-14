@@ -9,6 +9,10 @@ import javax.swing.JButton;
 
 public class Button extends JButton
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7637028804184653289L;
 	MouseListener m1;
 	 MouseAdapter lis;
 	

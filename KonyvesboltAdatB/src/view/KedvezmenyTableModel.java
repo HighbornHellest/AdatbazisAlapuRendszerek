@@ -8,6 +8,10 @@ import dao.KedvezmenyDao;
 import model.Kedvezmeny;;
 
 public class KedvezmenyTableModel extends AbstractTableModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -421366981554883577L;
 	private List<Kedvezmeny> kedvezmenyek = KedvezmenyDao.getKedvezmenyek();
 
 	public List<Kedvezmeny> getKedvezmenyek() {

@@ -42,6 +42,7 @@ public class Main {
 						    "Sikerült");
 					login.setVisible(false);
 					login.dispose();
+					@SuppressWarnings("unused")
 					Core core=new Core();
 				} catch (SQLException e1) {
 					JOptionPane.showMessageDialog(login,
