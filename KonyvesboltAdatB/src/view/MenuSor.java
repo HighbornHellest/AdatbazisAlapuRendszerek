@@ -16,12 +16,15 @@ import javax.swing.JTable;
 
 import dao.AlbumDao;
 import dao.AlkalmazottDao;
+import dao.AruhazDao;
 import dao.FilmDao;
 import dao.KonyvDao;
 import model.Album;
 import model.AlbumTableModel;
 import model.Alkalmazott;
 import model.AlkalmazottTableModel;
+import model.Aruhaz;
+import model.AruhazTableModel;
 import model.Film;
 import model.FilmTableModel;
 import model.KedvezmenyTableModel;
@@ -76,6 +79,9 @@ public class MenuSor extends JMenuBar implements ActionListener {
 	private JPanel gombPanel;
 
 	private JButton add;
+
+	private JScrollPane aruhaz_scrollpane;
+	private JTable aruhaz;
 
 	@Override
 	public void actionPerformed(ActionEvent e) // itt vanakka a kiírások a
@@ -139,6 +145,19 @@ public class MenuSor extends JMenuBar implements ActionListener {
 			break;
 		}
 		case "Aruhaz": {
+			currentPane = aruhaz_scrollpane;
+			add.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Aruhaz a=new Aruhaz();
+					InputWindow iw = new InputWindow(AruhazTableModel.COLUMN_NAMES);
+					a.setFromArray(iw.showForm());
+					AruhazDao.addAruhaz(a);
+					((AruhazTableModel) aruhaz.getModel()).reset();
+					gui.revalidate();
+				}
+			});
 			break;
 		}
 		case "Film": {
@@ -225,6 +244,11 @@ public class MenuSor extends JMenuBar implements ActionListener {
 		album_scrollpane = new JScrollPane(album);
 		album.setAutoCreateRowSorter(true);
 		album_scrollpane.setVisible(true);
+		// áruház
+		aruhaz = new JTable(new AruhazTableModel());
+		aruhaz_scrollpane = new JScrollPane(aruhaz);
+		aruhaz.setAutoCreateRowSorter(true);
+		aruhaz_scrollpane.setVisible(true);
 		// alkalmazott
 		alkalmazott = new JTable(new AlkalmazottTableModel());
 		alkalmazott_scrollpane = new JScrollPane(alkalmazott);
