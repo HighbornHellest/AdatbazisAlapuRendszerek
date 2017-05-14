@@ -21,7 +21,7 @@ public class FilmDao {
 	public static int addFilm(Film film){
 		int id=0;
 		try {
-			PreparedStatement s=KonyvesboltDao.createPreparedStatement("INSERT INTO FILM(CIM, MUFAJ, BLURAYE, RENDEZO, AR)"+
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("INSERT INTO FILM(CIM, MUFAJ, BLUERAYE, RENDEZO, AR)"+
 		" VALUES (?, ?, ?, ?, ?)"
 					, new String[]{"ID"});
 			try{
@@ -104,7 +104,7 @@ public class FilmDao {
 	}
 	public static void updateFilm(int filmId,Film film){
 		try {
-			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE FILM SET CIM=?, MUFAJ=?, BLURAYE=?, RENDEZO=?,AR=? WHERE ID=?");
+			PreparedStatement s=KonyvesboltDao.createPreparedStatement("UPDATE FILM SET CIM=?, MUFAJ=?, BLUERAYE=?, RENDEZO=?,AR=? WHERE ID=?");
 			try{
 				s.setString(1, film.getCim());
 				s.setString(2, film.getMufaj());

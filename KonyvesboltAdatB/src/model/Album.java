@@ -14,6 +14,11 @@ public class Album extends Termek{
 		this.eloado = eloado;
 		this.mufaj = mufaj;
 	}
+	
+	public Album() {
+		super();
+	}
+
 	public String getEloado() {
 		return eloado;
 	}
@@ -25,5 +30,24 @@ public class Album extends Termek{
 	}
 	public void setMufaj(String mufaj) {
 		this.mufaj = mufaj;
+	}
+
+	public void setFromArray(String[] array) {
+		setId(Integer.parseInt(array[0]));
+		setEloado(array[2]);
+		setCim(array[1]);
+		setMufaj(array[3]);
+		setAr(Integer.parseInt(array[4]));
+		
+	}
+
+	public String[] toArray() {
+		String[] array=new String[5];
+		array[0]=Integer.toString(getId());
+		array[2]=getEloado();
+		array[1]=getCim();
+		array[3]=getMufaj();
+		array[4]=Integer.toString(getAr());
+		return array;
 	}
 }

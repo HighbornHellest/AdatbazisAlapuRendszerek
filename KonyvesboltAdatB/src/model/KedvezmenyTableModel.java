@@ -1,11 +1,10 @@
-package view;
+package model;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import dao.KedvezmenyDao;
-import model.Kedvezmeny;;
+import dao.KedvezmenyDao;;
 
 public class KedvezmenyTableModel extends AbstractTableModel {
 	/**

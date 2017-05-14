@@ -1,11 +1,10 @@
-package view;
+package model;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import dao.FilmDao;
-import model.Film;
 
 public class FilmTableModel extends AbstractTableModel{
 	
@@ -14,9 +13,14 @@ public class FilmTableModel extends AbstractTableModel{
 	 */
 	private static final long serialVersionUID = 5503452980432821789L;
 	private List<Film> filmek = FilmDao.getFilmek();
-
+	public static final String[] COLUMN_NAMES={"ID","Cím","Műfaj","Blueray","Rendező","ár"};
 	public List<Film> getFilmek() {
 		return filmek;
+	}
+
+	@Override
+	public String getColumnName(int column) {
+		return COLUMN_NAMES[column];
 	}
 
 	public void setFilmek(List<Film> filmek) {
@@ -25,12 +29,17 @@ public class FilmTableModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 5;
+		return 6;
 	}
 
 	@Override
 	public int getRowCount() {
 		return filmek.size();
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		return getValueAt(0, columnIndex).getClass();
 	}
 
 	@Override
@@ -44,8 +53,10 @@ public class FilmTableModel extends AbstractTableModel{
 		case 2:
 			return film.getMufaj();
 		case 3:
-			return film.getRendezo();
+			return film.isBluerayE();
 		case 4:
+			return film.getRendezo();
+		case 5:
 			return film.getAr();
 	
 		default:
@@ -60,7 +71,7 @@ public class FilmTableModel extends AbstractTableModel{
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		String value=(String) aValue;
+		String value=aValue.toString();
 		switch (columnIndex) {
 		case 0:
 			filmek.get(rowIndex).setId(Integer.parseInt(value));
@@ -72,14 +83,20 @@ public class FilmTableModel extends AbstractTableModel{
 			filmek.get(rowIndex).setMufaj(value);
 			break;
 		case 3:
+			filmek.get(rowIndex).setBluerayE(Boolean.parseBoolean(value));
+			break;	
+		case 4:
 			filmek.get(rowIndex).setRendezo(value);
 			break;
-		case 4:
+		case 5:
 			filmek.get(rowIndex).setAr(Integer.parseInt(value));
 		default:
 			break;
 		}
 		FilmDao.updateFilm(filmek.get(rowIndex).getId(),filmek.get(rowIndex));
 	}
-	
+	public void reset(){
+		filmek=FilmDao.getFilmek();
+		fireTableDataChanged();
+	}
 }

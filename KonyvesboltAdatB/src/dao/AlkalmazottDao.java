@@ -24,8 +24,8 @@ public class AlkalmazottDao {
 		int id = -1;
 		try {
 			PreparedStatement s = KonyvesboltDao.createPreparedStatement(
-					"INSERT INTO ALKALMAZOTT (NEV,SZULIDO,FIZETES,BEOSZTAS,MUMKAVISZONY,ARUHAZID)"
-							+ " VALUES (?, ?, ?, ?,?,?)",
+					"INSERT INTO ALKALMAZOTT (NEV,SZULIDO,FIZETES,BEOSZTAS,MUNKAVISZONY,CIM,ARUHAZID)"
+							+ " VALUES (?, ?, ?, ?, ?, ?, ?)",
 					new String[] { "ID" });
 			try {
 				s.setString(1, alkalmazott.getNev());
@@ -33,7 +33,8 @@ public class AlkalmazottDao {
 				s.setInt(3, alkalmazott.getFizetes());
 				s.setString(4, alkalmazott.getBeosztas());
 				s.setString(5, alkalmazott.getMunkaviszony());
-				s.setInt(6, alkalmazott.getAruhaz().getId());
+				s.setString(6, alkalmazott.getCim());
+				s.setInt(7, alkalmazott.getAruhaz().getId());
 				s.execute();
 				ResultSet rs = s.getGeneratedKeys();
 				try {

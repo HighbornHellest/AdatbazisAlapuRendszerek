@@ -50,7 +50,7 @@ public class Frame extends JFrame
 		//gomb = new Button("asdasda");
 		login = new Panel();
 		leker = new Panel();
-		leker.setLayout(new GridLayout(0,1));
+		leker.setLayout(new BorderLayout());
 		
 		feltolt = new Panel();
 		modosit = new Panel();
@@ -58,8 +58,8 @@ public class Frame extends JFrame
 		MenuSor Menu = new MenuSor(this);
 		
 		this.setLayout(new BorderLayout());
-		this.setSize(1920,1080);
-		this.setResizable(false);
+		this.setSize(800,600);
+		this.setResizable(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

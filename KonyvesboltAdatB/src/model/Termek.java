@@ -5,10 +5,14 @@ package model;
  *
  */
 public class Termek {
-	private int id;
-	private String cim;
-	private int ar;
-	private String tipus;
+	private int id=0;
+	private String cim="default";
+	private int ar=0;
+	private String tipus="default";
+	
+	public Termek() {
+		super();
+	}
 	public Termek(int id, String cim, int ar, String tipus) {
 		super();
 		this.id = id;

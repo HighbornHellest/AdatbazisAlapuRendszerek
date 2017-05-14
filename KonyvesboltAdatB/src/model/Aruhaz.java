@@ -16,6 +16,8 @@ public class Aruhaz {
 		this.dolgozoSzam = dolgozoSzam;
 		this.nyitvatart = nyitvatart;
 	}
+	public Aruhaz() {
+	}
 	public int getId() {
 		return id;
 	}
@@ -39,6 +41,21 @@ public class Aruhaz {
 	}
 	public void setNyitvatart(String nyitvatart) {
 		this.nyitvatart = nyitvatart;
+	}
+	public String[] toArray() {
+		String[] array=new String[4];
+		array[0]=Integer.toString(id);
+		array[1]=cim;
+		array[2]=Integer.toString(dolgozoSzam);
+		array[3]=nyitvatart;		
+		return array;
+	}
+	public void setFromArray(String[] array) {
+		id=Integer.parseInt(array[0]);
+		cim=array[1];
+		dolgozoSzam=Integer.parseInt(array[2]);
+		nyitvatart=array[3];
+		
 	}
 	
 }

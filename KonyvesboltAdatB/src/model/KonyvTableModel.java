@@ -1,4 +1,4 @@
-package view;
+package model;
 
 import java.sql.Date;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import dao.KonyvDao;
-import model.Konyv;
 
 public class KonyvTableModel extends AbstractTableModel {
 
@@ -15,7 +14,7 @@ public class KonyvTableModel extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = -6025598787341275788L;
 	private List<Konyv> konyvek = KonyvDao.getKonyvek();
-	private static final String[] COLUMN_NAMES={"ID","Cím","Oldalak száma","Kiadás ideje","Kiadás","Szerző","Társszerző","Kiadó",
+	public static final String[] COLUMN_NAMES={"ID","Cím","Oldalak száma","Kiadás ideje","Kiadás","Szerző","Társszerző","Kiadó",
 			"Vásárlás száma","Méret","Kötés","Ár","Műfaj","Alműfaj","Van ebook","Csak ebook","ISBN13"};
 	public KonyvTableModel() {
 		super();
@@ -43,6 +42,11 @@ public class KonyvTableModel extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		return konyvek.size();
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		return getValueAt(0, columnIndex).getClass();
 	}
 
 	@Override
@@ -96,7 +100,7 @@ public class KonyvTableModel extends AbstractTableModel {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		String value=(String) aValue;
+		String value=aValue.toString();
 		switch (columnIndex) {
 		case 0:
 			konyvek.get(rowIndex).setId(Integer.parseInt(value));
@@ -153,6 +157,11 @@ public class KonyvTableModel extends AbstractTableModel {
 			break;
 		}
 		KonyvDao.updateKonyv(konyvek.get(rowIndex).getId(), konyvek.get(rowIndex));
+	}
+
+	public void reset() {
+		konyvek = KonyvDao.getKonyvek();
+		fireTableDataChanged();
 	}
 
 }

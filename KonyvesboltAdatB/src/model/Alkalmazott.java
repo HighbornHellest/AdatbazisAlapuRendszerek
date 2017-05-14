@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Date;
 
+
 /**
  * @author Tamássy Urmás
  *
@@ -26,6 +27,9 @@ public class Alkalmazott {
 		this.munkaviszony = munkaviszony;
 		this.cim = cim;
 		this.aruhaz=aruhaz;
+	}
+	public Alkalmazott() {
+		aruhaz=new Aruhaz(); 
 	}
 	public int getId() {
 		return id;
@@ -74,6 +78,30 @@ public class Alkalmazott {
 	}
 	public void setAruhaz(Aruhaz aruhaz) {
 		this.aruhaz = aruhaz;
+	}
+	public String[] toArray() {
+		String[] array=new String[8];
+		array[0]=Integer.toString(getId());
+		array[1]=getNev();
+		array[2]=getSzulIdo().toString();
+		array[3]=Integer.toString(getFizetes());
+		array[4]=getBeosztas();
+		array[5]=getMunkaviszony();
+		array[6]=getCim();
+		array[7]=Integer.toString(getAruhaz().getId());
+		
+		return array;
+	}
+	public void setFromArray(String[] array) {
+		id=Integer.parseInt(array[0]);
+		nev=array[1];
+		szulIdo=Date.valueOf(array[2]);
+		fizetes=Integer.parseInt(array[3]);
+		beosztas=array[4];
+		munkaviszony=array[5];
+		cim=array[6];
+		aruhaz.setId(Integer.parseInt(array[7]));
+		
 	}
 	
 }

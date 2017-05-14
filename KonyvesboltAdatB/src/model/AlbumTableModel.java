@@ -1,11 +1,10 @@
-package view;
+package model;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import dao.AlbumDao;
-import model.Album;
 
 public class AlbumTableModel extends AbstractTableModel
 {
@@ -15,15 +14,15 @@ public class AlbumTableModel extends AbstractTableModel
 	 * 
 	 */
 	private static final long serialVersionUID = -1268103299102232362L;
-	private static final String[] COLUMN_NAMES={"ID","Cím","Előadó","Műfaj","Ár"};
-	private List<Album> Albumok = AlbumDao.getAlbumok();
+	public static final String[] COLUMN_NAMES={"ID","Cím","Előadó","Műfaj","Ár"};
+	private List<Album> albumok = AlbumDao.getAlbumok();
 
 	public List<Album> getAlbumok() {
-		return Albumok;
+		return albumok;
 	}
 
 	public void setAlbumok(List<Album> albumok) {
-		Albumok = albumok;
+		this.albumok = albumok;
 	}
 	
 	
@@ -35,7 +34,7 @@ public class AlbumTableModel extends AbstractTableModel
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return Albumok.size();
+		return albumok.size();
 	}
 	
 	@Override
@@ -45,7 +44,7 @@ public class AlbumTableModel extends AbstractTableModel
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Album album = Albumok.get(rowIndex);
+		Album album = albumok.get(rowIndex);
 		
 		switch(columnIndex)
 		{
@@ -78,6 +77,33 @@ public class AlbumTableModel extends AbstractTableModel
 		
 		
 		return null;
+	}
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		if(columnIndex==0) return false;
+		else return true;
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		return getValueAt(0, columnIndex).getClass();
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		Album album=albumok.get(rowIndex);
+		String[] array=album.toArray();
+		array[columnIndex]=aValue.toString();
+		album.setFromArray(array);
+		AlbumDao.updateAlbum(album.getId(), album);
+		//albumok.set(rowIndex, album);
+		reset();
+	}
+
+	public void reset() {
+		albumok=AlbumDao.getAlbumok();
+		fireTableDataChanged();
 	}
 
 }
